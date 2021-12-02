@@ -54,12 +54,15 @@
                                         @csrf
                                         @include("template-admin.fixed-layout.message")
                                         <div class="form-group">
+                                            <b style="font-size: 0.75em; color: #c9c8c8">নাম</b><br/>
                                             <input type="text" name="name" class="form-control form-control-lg" value="{{old('name')}}" id="exampleInputEmail1" placeholder="পূর্ণ নাম" required>
                                         </div>
                                         <div class="form-group">
+                                            <b style="font-size: 0.75em; color: #c9c8c8">ইমেইল</b><br/>
                                             <input type="email" name="email" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="ইমেইল" required>
                                         </div>
                                         <div class="form-group">
+                                            <b style="font-size: 0.75em; color: #c9c8c8">মোবাইল নম্বর (১১ ডিজিট)</b><br/>
                                             <input type="text" name="mobile_number" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" maxlength="11" placeholder="মোবাইল নম্বর ইংরেজিতে লিখুন" required>
                                         </div>
                                         <div class="form-group">
@@ -138,6 +141,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
+                                            <b style="font-size: 0.75em; color: #c9c8c8">ঠিকানা</b><br/>
                                             <input type="text" name="address" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="ঠিকানা লিখুন" required>
                                         </div>
                                         @include("new-admin.fixed-layout.captcha")
@@ -149,7 +153,7 @@
                                             </div>
                                         </div>
                                         <div class="mt-3">
-                                            <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="সাইন আপ" style="background-color: #1B783C; border-radius: 10px"/>
+                                            <input type="submit" class="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn" value="সাইন আপ" style="background-color: #1B783C; border-radius: 10px"/>
                                         </div>
                                     </form>
                                     <?php
