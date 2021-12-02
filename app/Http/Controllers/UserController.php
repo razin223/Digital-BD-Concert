@@ -32,7 +32,6 @@ class UserController extends Controller {
     public function registration(Request $request) {
         if (isset($request->agree)) {
             
-            dd($request->all());
 
             $Required = [
                 'name' => 'required|max:255',
