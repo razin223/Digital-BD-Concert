@@ -30,13 +30,13 @@
                                         <img src="{{asset('assets/digital-bd-day.jpeg')}}">
                                     </a>
                                 </div>
-                                <h4 class="text-center">ডিজিটাল বাংলাদেশ কুইজ</h4>
+                                <h3 class="text-center" style="color: #006622">ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট</h3>
                                 <!--<h5 class="font-weight-light text-center">{{$message}}</h5>-->
                                 @csrf
                                 @include("template-admin.fixed-layout.message")
-                                <div class="text-center mt-4 font-weight-light"> অ‌্যাকাউন্ট আছে? <a href="<?php echo route('login') ?>" class="text-primary">সাইন ইন করুন</a></div>
+                                <div class="text-center mt-4 font-weight-light"> <a href="<?php echo route('landing') ?>" class="text-primary">রেজিস্ট্রেশন করুন</a></div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    <button type="button" onclick="window.location = 'https://digitalbangladesh.gov.bd'" class="btn btn-block btn-google auth-form-btn">
+                                    <button type="button" onclick="window.location = 'https://digitalbangladesh.gov.bd'" class="btn btn-block btn-warning auth-form-btn" style="background-color: #006622; border-radius: 10px">
                                         <i class="icon-home mr-2"></i>ওয়েবসাইটে ফিরে যান </button>
                                 </div>
                             </div>
