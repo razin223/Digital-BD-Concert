@@ -116,7 +116,8 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="address" id="institute" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="ইন্সটিটিউট এর নাম লিখুন" required>
+                                            <b style="" id="institute_name_header">প্রতিষ্ঠান</b><br/>
+                                            <input type="text" name="address" id="institute" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="প্রতিষ্ঠান এর নাম লিখুন" required>
                                         </div>
                                         <div class="form-group">
                                             <b style="">লিঙ্গ</b><br/>
@@ -237,6 +238,7 @@
                         var Value = $(this).val();
 
                         if (Value != "") {
+                            $("#institute_name_header").html("প্রতিষ্ঠান");
                             if (Value == 'Student') {
                                 $("#institute").attr("placeholder", "শিক্ষা প্রতিষ্ঠানের এর নাম লিখুন");
                             } else if (Value == 'Service') {
@@ -245,10 +247,12 @@
                                 $("#institute").attr("placeholder", "ব‌্যবসায়িক প্রতিষ্ঠানের এর নাম লিখুন");
                             } else if (Value == 'Others') {
                                 $("#institute").attr("placeholder", "পেশার নাম লিখুন ");
+                                $("#institute_name_header").html("পেশার নাম");
                             }
 
                         } else {
-                            $("#institute").attr("placeholder", "ইন্সটিটিউট এর নাম লিখুন")
+                            $("#institute").attr("placeholder", "প্রতিষ্ঠানের এর নাম লিখুন");
+                            $("#institute_name_header").html("প্রতিষ্ঠান");
                         }
                     });
                 });
