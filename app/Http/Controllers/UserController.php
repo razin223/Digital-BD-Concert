@@ -113,11 +113,10 @@ class UserController extends Controller {
 
                     $details = [
                         'name' => $request->name,
-                        'group' => 'ক',
                         'to' => $request->email,
                         'from' => env("MAIL_FROM_ADDRESS"),
                         'from_name' => env("MAIL_FROM_NAME"),
-                        'subject' => "ডিজিটাল বাংলাদেশ কুইজ ইমেইল ভেরিফিকেশন",
+                        'subject' => "ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট ইমেইল ভেরিফিকেশন",
                         'id' => $User->id,
                         "code" => $VerificationCode
                     ];
@@ -132,7 +131,7 @@ class UserController extends Controller {
                     \Mail::to($request->email)->send(new \App\Mail\Mailer($details));
 
 
-                    return redirect(route('ka_group_registration'))->with('success', 'রেজিস্ট্রেশন সম্পন্ন হয়েছে। দয়া করে আপনার ইমেইলের ইনবক্স/প্রোমোশন/সোসাল সেকশন এ দেখুন। যদি না পান তবে স্প‌্যামবক্স দেখুন।');
+                    return redirect(route('registration'))->with('success', 'রেজিস্ট্রেশন সম্পন্ন হয়েছে। দয়া করে আপনার ইমেইলের ইনবক্স/প্রোমোশন/সোসাল সেকশন এ দেখুন। যদি না পান তবে স্প‌্যামবক্স দেখুন।');
                 }
             }
         } else {
