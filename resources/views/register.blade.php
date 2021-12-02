@@ -92,12 +92,10 @@
                                                 ?>
                                             </select>
                                         </div>
-                                         <div class="form-group">
-                                            <input type="email" name="email" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="ইমেইল" required>
-                                        </div>
+                                         
                                         <div class="form-group">
                                             <b style="font-size: 0.75em; color: #c9c8c8">জেলা</b><br/>
-                                            <select name="district_id" required class="form-conrol">
+                                            <select name="district_id" required class="form-conrol" style="width: 100%">
                                                 <option value="">জেলা নির্বাচন করুন</option>
                                                 <?php
                                                                                                 foreach (\App\District::orderBy('bn','asc')->get() as $value) {
