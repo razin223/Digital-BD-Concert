@@ -26,6 +26,10 @@
             select option{
                 color: #000;
             }
+            
+            b{
+                color: #006622;
+            }
             @media only screen and (max-width: 576px) {
                 select{
                     width: 68px;
