@@ -19,7 +19,7 @@
 
                 <p>&nbsp;</p>
 
-                <p><img src="data:image/png;base64, {!! $details['ticket_qr'] !!}"></p>
+                <p style="text-align: center"><img src="data:image/png;base64, {!! $details['ticket_qr'] !!}"></p>
             </td>
         </tr>
         <tr>
