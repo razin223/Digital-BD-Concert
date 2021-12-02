@@ -308,7 +308,7 @@ class UserController extends Controller {
                             'ticket_qr' => base64_encode(QrCode::format('svg')->size(200)->errorCorrection('H')->generate($QRString))
                         ];
 
-                        $PDF = PDF::loadView('Email.TicketPDF', $details);
+                        $PDF = PDF::loadView('Email.TicketPDF', compact('details'));
 
 
                         $details = [
