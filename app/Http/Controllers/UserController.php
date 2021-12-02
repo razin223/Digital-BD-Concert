@@ -328,7 +328,7 @@ class UserController extends Controller {
 
 
 
-                        \Mail::to($request->email)->send(new \App\Mail\Mailer($details));
+                        \Mail::to($User->email)->send(new \App\Mail\Ticket($details));
 
                         return redirect('/message')->with('success', 'ইমেইল ভেরিফিকেশন সফল হয়েছে। এখন সাইন ইন করুন।');
                     } else {
