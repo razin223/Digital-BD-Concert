@@ -26,18 +26,18 @@
             select option{
                 color: #000;
             }
-            
+
             b{
                 color: #006622;
             }
             .text-danger{
                 color: darkred !important;
             }
-            
+
             .bg-danger{
                 background-color: darkred !important;
             }
-            
+
             @media only screen and (max-width: 576px) {
                 select{
                     width: 68px;
@@ -158,7 +158,7 @@
                                             <b style="">ঠিকানা</b><span class="text-danger">*</span><br/>
                                             <input type="text" name="address" class="form-control form-control-lg" value="{{old('address')}}" id="exampleInputEmail1" placeholder="ঠিকানা লিখুন" required>
                                         </div>
-                                         <div class="form-group">
+                                        <div class="form-group">
                                             <b style="">জাতীয় পরিচয় পত্র নম্বর</b><br/>
                                             <input type="number" name="nid" class="form-control form-control-lg" value="{{old('nid')}}" id="exampleInputEmail1" placeholder="জাতীয় পরিচয় পত্র নম্বর লিখুন">
                                         </div>
@@ -181,92 +181,94 @@
                                         <?php
                                     }
                                     ?>
-                                    
-                                        <div class="text-center mt-4 font-weight-light">
-                                            <button type="button" onclick="window.location = 'https://digitalbangladesh.gov.bd'" class="btn btn-block btn-warning auth-form-btn" style="background-color: #006622; border-radius: 10px">
-                                                <i class="icon-home mr-2"></i>ওয়েবসাইটে ফিরে যান </button>
-                                        </div>
-                                        <!--                                <div class="text-center mt-4 font-weight-light">
-                                                                            <h5>অথবা </h5><br/>
-                                                                            <button type="button" onclick="window.location = '#/auth/google'" class="btn btn-block btn-google auth-form-btn">
-                                                                                <i class="icon-social-google mr-2"></i>গুগল দিয়ে সাইন আপ করুন </button>
-                                        
-                                                                            <button type="button" onclick="window.location = '#/auth/facebook'" class="btn btn-block btn-facebook auth-form-btn">
-                                                                                <i class="icon-social-facebook mr-2"></i>ফেসবুক দিয়ে সাইন আপ করুন </button>
-                                                                        </div>-->
+
+                                    <div class="text-center mt-4 font-weight-light"> <a href="<?php echo route('email_verify_resend') ?>" class="text-primary">পুনরায় ভেরিফিকেশন ইমেইল পাঠান</a></div>
+
+                                    <div class="text-center mt-4 font-weight-light">
+                                        <button type="button" onclick="window.location = 'https://digitalbangladesh.gov.bd'" class="btn btn-block btn-warning auth-form-btn" style="background-color: #006622; border-radius: 10px">
+                                            <i class="icon-home mr-2"></i>ওয়েবসাইটে ফিরে যান </button>
                                     </div>
+                                    <!--                                <div class="text-center mt-4 font-weight-light">
+                                                                        <h5>অথবা </h5><br/>
+                                                                        <button type="button" onclick="window.location = '#/auth/google'" class="btn btn-block btn-google auth-form-btn">
+                                                                            <i class="icon-social-google mr-2"></i>গুগল দিয়ে সাইন আপ করুন </button>
+                                    
+                                                                        <button type="button" onclick="window.location = '#/auth/facebook'" class="btn btn-block btn-facebook auth-form-btn">
+                                                                            <i class="icon-social-facebook mr-2"></i>ফেসবুক দিয়ে সাইন আপ করুন </button>
+                                                                    </div>-->
                             </div>
                         </div>
                     </div>
-                    <!-- content-wrapper ends -->
                 </div>
-                <!-- page-body-wrapper ends -->
+                <!-- content-wrapper ends -->
             </div>
-            <!-- container-scroller -->
-            <!-- plugins:js -->
-            <script src="{{asset('admin/vendors/js/vendor.bundle.base.js')}}"></script>
-            <!-- endinject -->
-            <!-- Plugin js for this page -->
-            <!-- End plugin js for this page -->
-            <!-- inject:js -->
-            <script src="{{asset('admin/js/off-canvas.js')}}"></script>
-            <script src="{{asset('admin/js/misc.js')}}"></script>
-            <script src="{{asset('admin/js/jquery.js')}}"></script>
-            <script type="text/javascript">
-                                                $(document).ready(function () {
-                                                    $("#captcha").click(function () {
-                                                        $.ajax({
-                                                            url: "/captcha_img",
-                                                            data: {},
-                                                            success: function (data) {
-                                                                console.log(data);
-                                                                $("#captcha_img").attr("src", data.src);
-                                                            },
-                                                            error: function (error) {
-                                                                alert(error.responseText);
-                                                            }
-                                                        });
+            <!-- page-body-wrapper ends -->
+        </div>
+        <!-- container-scroller -->
+        <!-- plugins:js -->
+        <script src="{{asset('admin/vendors/js/vendor.bundle.base.js')}}"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="{{asset('admin/js/off-canvas.js')}}"></script>
+        <script src="{{asset('admin/js/misc.js')}}"></script>
+        <script src="{{asset('admin/js/jquery.js')}}"></script>
+        <script type="text/javascript">
+                                            $(document).ready(function () {
+                                                $("#captcha").click(function () {
+                                                    $.ajax({
+                                                        url: "/captcha_img",
+                                                        data: {},
+                                                        success: function (data) {
+                                                            console.log(data);
+                                                            $("#captcha_img").attr("src", data.src);
+                                                        },
+                                                        error: function (error) {
+                                                            alert(error.responseText);
+                                                        }
                                                     });
                                                 });
-            </script>
-            <!-- endinject -->
+                                            });
+        </script>
+        <!-- endinject -->
 
-            <!-- Global site tag (gtag.js) - Google Analytics -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1R8EWLC6Z5"></script>
-            <script>
-                                                window.dataLayer = window.dataLayer || [];
-                                                function gtag() {
-                                                    dataLayer.push(arguments);
-                                                }
-                                                gtag('js', new Date());
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1R8EWLC6Z5"></script>
+        <script>
+                                            window.dataLayer = window.dataLayer || [];
+                                            function gtag() {
+                                                dataLayer.push(arguments);
+                                            }
+                                            gtag('js', new Date());
 
-                                                gtag('config', 'G-1R8EWLC6Z5');
-            </script>
+                                            gtag('config', 'G-1R8EWLC6Z5');
+        </script>
 
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $("#occupation").change(function () {
-                        var Value = $(this).val();
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#occupation").change(function () {
+                    var Value = $(this).val();
 
-                        if (Value != "") {
-                            $("#institute_name_header").html("প্রতিষ্ঠান");
-                            if (Value == 'Student') {
-                                $("#institute").attr("placeholder", "শিক্ষা প্রতিষ্ঠানের এর নাম লিখুন");
-                            } else if (Value == 'Service') {
-                                $("#institute").attr("placeholder", "চাকুরিরত প্রতিষ্ঠানের এর নাম লিখুন");
-                            } else if (Value == 'Business') {
-                                $("#institute").attr("placeholder", "ব‌্যবসায়িক প্রতিষ্ঠানের এর নাম লিখুন");
-                            } else if (Value == 'Others') {
-                                $("#institute").attr("placeholder", "পেশার নাম লিখুন ");
-                                $("#institute_name_header").html("পেশার নাম");
-                            }
-
-                        } else {
-                            $("#institute").attr("placeholder", "প্রতিষ্ঠানের এর নাম লিখুন");
-                            $("#institute_name_header").html("প্রতিষ্ঠান");
+                    if (Value != "") {
+                        $("#institute_name_header").html("প্রতিষ্ঠান");
+                        if (Value == 'Student') {
+                            $("#institute").attr("placeholder", "শিক্ষা প্রতিষ্ঠানের এর নাম লিখুন");
+                        } else if (Value == 'Service') {
+                            $("#institute").attr("placeholder", "চাকুরিরত প্রতিষ্ঠানের এর নাম লিখুন");
+                        } else if (Value == 'Business') {
+                            $("#institute").attr("placeholder", "ব‌্যবসায়িক প্রতিষ্ঠানের এর নাম লিখুন");
+                        } else if (Value == 'Others') {
+                            $("#institute").attr("placeholder", "পেশার নাম লিখুন ");
+                            $("#institute_name_header").html("পেশার নাম");
                         }
-                    });
+
+                    } else {
+                        $("#institute").attr("placeholder", "প্রতিষ্ঠানের এর নাম লিখুন");
+                        $("#institute_name_header").html("প্রতিষ্ঠান");
+                    }
                 });
-            </script>
+            });
+        </script>
     </body>
 </html>
