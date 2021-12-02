@@ -30,10 +30,10 @@ class UserController extends Controller {
         return view('quiz.about_us', compact('RegistrationStart', 'RegistrationEnd'));
     }
 
-    public function ka_group_registration_view() {
+    public function registration_view() {
         $RegistrationStart = $this->RegistrationStart;
         $RegistrationEnd = $this->RegistrationEnd;
-        return view('register_ka', compact('RegistrationStart', 'RegistrationEnd'));
+        return view('register', compact('RegistrationStart', 'RegistrationEnd'));
     }
 
     public function kha_group_registration_view() {

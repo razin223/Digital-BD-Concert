@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 
-Route::get('/', 'UserController@registration_landing_view')->name('landing');
+Route::get('/', 'UserController@registration_view')->name('landing');
 
 
 Route::get("/quiz/content_guest/{id}", function($id) {

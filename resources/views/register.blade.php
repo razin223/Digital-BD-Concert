@@ -26,7 +26,6 @@
             select option{
                 color: #000;
             }
-
             @media only screen and (max-width: 576px) {
                 select{
                     width: 68px;
@@ -47,11 +46,11 @@
                                     </a>
                                 </div>
                                 <h3 class="text-center">ডিজিটাল বাংলাদেশ কুইজ</h3>
-                                <h5 class=" text-center"> গ্রুপ গ রেজিস্ট্রেশন (১৯-তদুর্ধ বছর)</h5>
+                                <h5 class=" text-center"> গ্রুপ ক রেজিস্ট্রেশন (৮-১২ বছর)</h5>
                                 <?php
                                 if (time() < strtotime($RegistrationEnd . "+06:00") && time() > strtotime($RegistrationStart . "+06:00")) {
                                     ?>
-                                    <form class="pt-3" method="post" action="<?php echo route('ga_group_registration') ?>">
+                                    <form class="pt-3" method="post" action="<?php echo route('ka_group_registration') ?>">
                                         @csrf
                                         @include("template-admin.fixed-layout.message")
                                         <div class="form-group">
@@ -91,7 +90,7 @@
                                             <select name="year" required>
                                                 <option value="">বছর</option>
                                                 <?php
-                                                for ($i = 2015; $i >= 1972; $i--) {
+                                                for ($i = 2015; $i >= 2000; $i--) {
                                                     echo "<option value='{$i}'";
                                                     echo (old('year') == $i) ? " selected" : "";
                                                     echo ">{$i}</option>";
@@ -171,15 +170,15 @@
             <!-- endinject -->
 
             <!-- Global site tag (gtag.js) - Google Analytics -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQHXC1MMX1"></script>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1R8EWLC6Z5"></script>
             <script>
-                                                            window.dataLayer = window.dataLayer || [];
-                                                            function gtag() {
-                                                                dataLayer.push(arguments);
-                                                            }
-                                                            gtag('js', new Date());
+                                                window.dataLayer = window.dataLayer || [];
+                                                function gtag() {
+                                                    dataLayer.push(arguments);
+                                                }
+                                                gtag('js', new Date());
 
-                                                            gtag('config', 'G-TQHXC1MMX1');
+                                                gtag('config', 'G-1R8EWLC6Z5');
             </script>
     </body>
 </html>

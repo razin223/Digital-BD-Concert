@@ -59,15 +59,15 @@
         <!-- endinject -->
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQHXC1MMX1"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1R8EWLC6Z5"></script>
         <script>
-                                                window.dataLayer = window.dataLayer || [];
-                                                function gtag() {
-                                                    dataLayer.push(arguments);
-                                                }
-                                                gtag('js', new Date());
+                                        window.dataLayer = window.dataLayer || [];
+                                        function gtag() {
+                                            dataLayer.push(arguments);
+                                        }
+                                        gtag('js', new Date());
 
-                                                gtag('config', 'G-TQHXC1MMX1');
+                                        gtag('config', 'G-1R8EWLC6Z5');
         </script>
     </body>
 </html>
