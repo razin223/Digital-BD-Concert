@@ -31,7 +31,7 @@
                 color: #006622;
             }
             .text-danger{
-                color: darkred;
+                color: darkred !important;
             }
             
             @media only screen and (max-width: 576px) {
