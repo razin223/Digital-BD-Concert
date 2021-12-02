@@ -155,7 +155,7 @@
                                         </div>
                                          <div class="form-group">
                                             <b style="">জাতীয় পরিচয় পত্র নম্বর</b><br/>
-                                            <input type="number" name="nid" class="form-control form-control-lg" value="{{old('nid')}}" id="exampleInputEmail1" placeholder="জাতীয় পরিচয় পত্র নম্বর লিখুন" required>
+                                            <input type="number" name="nid" class="form-control form-control-lg" value="{{old('nid')}}" id="exampleInputEmail1" placeholder="জাতীয় পরিচয় পত্র নম্বর লিখুন">
                                         </div>
                                         @include("new-admin.fixed-layout.captcha")
                                         <div class="mb-4">
