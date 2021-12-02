@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class Mailer_EN extends Mailable {
+class Ticket extends Mailable {
 
     use Queueable,
         SerializesModels;
@@ -20,8 +20,8 @@ class Mailer_EN extends Mailable {
      * @return void
      */
     public function __construct($details) {
-        
-       
+
+
         //
         $this->details = $details;
     }
@@ -33,7 +33,9 @@ class Mailer_EN extends Mailable {
      */
     public function build() {
         return $this->subject($this->details['subject'])
-                        ->view('Email.en_email_verify')
+                        ->view('Email.ticket') > attachData($this->details->pdf, $this->ticket . '.pdf', [
+                            'mime' => 'application/pdf',
+                        ])
                         ->from($this->details['from'], $this->details['from_name']);
     }
 

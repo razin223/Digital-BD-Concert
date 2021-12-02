@@ -6,15 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Traits\MobileNoValidatorTrait;
+use PDF;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class UserController extends Controller {
-    
+
     use MobileNoValidatorTrait;
 
     private $DateCheck = "2021-12-10";
     private $RegistrationStart = '2021-11-29 00:00:00';
     private $RegistrationEnd = '2021-12-09 23:59:59';
-
 
     public function __construct() {
         $this->middleware('auth', ['only' => [
@@ -31,7 +32,7 @@ class UserController extends Controller {
 
     public function registration(Request $request) {
         if (isset($request->agree)) {
-            
+
             $Required = [
                 'name' => 'required|max:255',
                 'email' => 'required|email|unique:users,email',
@@ -39,11 +40,11 @@ class UserController extends Controller {
                 'day' => 'required',
                 'month' => 'required',
                 'year' => 'required',
-                'occupation'=>'required',
-                'institute'=>'required|max:512',
-                'gender'=>'required',
-                'district_id'=>'required',
-                'address'=>'required|max: 255',
+                'occupation' => 'required',
+                'institute' => 'required|max:512',
+                'gender' => 'required',
+                'district_id' => 'required',
+                'address' => 'required|max: 255',
                 'captcha' => "required|captcha",
             ];
 
@@ -59,13 +60,13 @@ class UserController extends Controller {
                 'day.required' => 'জন্মতারিখের দিন নির্বাচন করুন।',
                 'month.required' => 'জন্মতারিখের মাস নির্বাচন করুন।',
                 'year.required' => 'জন্মতারিখের বছর নির্বাচন করুন।',
-                 'occupation.required'=>'পেশা নির্বাচন করুন।',
-                'institute.required'=>'প্রতিষ্ঠানের নাম লিখুন।',
-                'institute.max'=>'প্রতিষ্ঠানের নাম সর্বোচ্চ ৫১২ অক্ষর হতে পারবে।',
-                'gender.required'=>'লিঙ্গ নির্বাচন করুন।',
-                'district_id.required'=>'জেলা নির্বাচন করুন।',
-                'address.required'=>'ঠিকানা লিখুন।',
-                'address.max'=>'ঠিকানা সর্বোচ্চ ২৫৫ অক্ষর হতে পারবে।',
+                'occupation.required' => 'পেশা নির্বাচন করুন।',
+                'institute.required' => 'প্রতিষ্ঠানের নাম লিখুন।',
+                'institute.max' => 'প্রতিষ্ঠানের নাম সর্বোচ্চ ৫১২ অক্ষর হতে পারবে।',
+                'gender.required' => 'লিঙ্গ নির্বাচন করুন।',
+                'district_id.required' => 'জেলা নির্বাচন করুন।',
+                'address.required' => 'ঠিকানা লিখুন।',
+                'address.max' => 'ঠিকানা সর্বোচ্চ ২৫৫ অক্ষর হতে পারবে।',
                 'captcha.required' => "ক‌্যাপচা প্রবেশ করান।",
                 'captcha.captcha' => "ক‌্যাপচা মিলে নাই।",
             ];
@@ -83,8 +84,8 @@ class UserController extends Controller {
             $Month = ($Month < 10) ? "0" . $Month : $Month;
 
             $DateofBirth = $Year . "-" . $Month . "-" . $Day;
-            
-            if(!$this->mobileNoValidator($request->mobile_number)){
+
+            if (!$this->mobileNoValidator($request->mobile_number)) {
                 return redirect()->back()->with('error', 'ভুল মোবাইল নম্বর দিয়েছেন। দয়া করে সঠিক মোবাইল নম্বর লিখুন।')->withInput();
             }
 
@@ -279,46 +280,6 @@ class UserController extends Controller {
         }
     }
 
-    public function en_email_verify_resend_code(Request $request) {
-
-        $Required = [
-            'email' => 'required|email',
-            'captcha' => "required|captcha",
-        ];
-
-        $Message = [
-            'email.required' => "Enter email address.",
-            'email.email' => 'Enter a valid email address.',
-            'captcha.required' => "Enter captcha.",
-            'captcha.captcha' => "Captcha does not match.",
-        ];
-
-        $request->validate($Required, $Message);
-
-        $User = \App\User::where('email', $request->email)->whereNull('email_verified_at')->where('status', 'Awaiting Verification')->first();
-        if ($User != null) {
-            $VerificationCode = $User->remember_token;
-
-
-
-            $details = [
-                'to' => $request->email,
-                'from' => env("MAIL_FROM_ADDRESS"),
-                'from_name' => env("MAIL_FROM_NAME_EN"),
-                'subject' => "Mujib Olympiad Email Verification",
-                'id' => $User->id,
-                "code" => $VerificationCode
-            ];
-
-            \Mail::to($request->email)->send(new \App\Mail\Mailer_EN($details));
-
-
-            return redirect(route('en.message'))->with('success', 'Email verification has been sent to your email again. Please check your email inbox/promotion/social section. If you do not get there, please check spam box.');
-        } else {
-            return redirect()->back()->withErrors(['Wrong email given or email already verified.'])->withInput();
-        }
-    }
-
     public function email_verify(Request $request, $id, $code) {
         $User = \App\User::find($id);
         if ($User != null) {
@@ -327,6 +288,48 @@ class UserController extends Controller {
                     $User->email_verified_at = date("Y-m-d H:i:s");
                     $User->status = 'Active';
                     if ($User->save()) {
+
+                        $Ticket = "DBD2021-" . str_pad($User->id, 7, "0", STR_PAD_LEFT);
+                        $Ticket .= $this->CheckDigit($User->id);
+                        $User->ticket = $Ticket;
+                        $User->save();
+
+                        $QRString = "Name: " . $User->name . "\n";
+                        $QRString .= "Email: " . $User->email . "\n";
+                        $QRString .= "Mobile: " . $User->mobile_no . "\n";
+                        $QRString .= "Ticket No: " . $User->ticket;
+
+
+                        $details = [
+                            'name' => $User->name,
+                            'mobile_number' => $User->mobile_number,
+                            'email' => $User->email,
+                            'ticket' => $User->ticket,
+                            'ticket_qr' => base64_encode(QrCode::format('svg')->size(200)->errorCorrection('H')->generate($QRString))
+                        ];
+
+                        $PDF = PDF::loadView('Email.TicketPDF', $details);
+
+
+                        $details = [
+                            'to' => $User->email,
+                            'name' => $User->name,
+                            'ticket' => $User->ticket,
+                            'from' => env("MAIL_FROM_ADDRESS"),
+                            'from_name' => env("MAIL_FROM_NAME"),
+                            'subject' => "ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট টিকিট | টিকিট নং: " . $User->ticket,
+                        ];
+
+
+                        \Config::set('mail.mailers.smtp.username', \App\TemporaryExam::getVariable('APP_HASH_2'));
+                        \Config::set('mail.mailers.smtp.password', \App\TemporaryExam::getVariable('APP_HASH'));
+
+
+
+
+
+                        \Mail::to($request->email)->send(new \App\Mail\Mailer($details));
+
                         return redirect('/message')->with('success', 'ইমেইল ভেরিফিকেশন সফল হয়েছে। এখন সাইন ইন করুন।');
                     } else {
                         return redirect('/message')->with('error', 'ইমেইল ভেরিফিকেশন এ ভুল ডাটা দেওয়া হয়েছে। দয়া করে সঠিক ডাটা দিন।');
@@ -341,7 +344,7 @@ class UserController extends Controller {
             return redirect('/message')->with('error', 'ইমেইল ভেরিফিকেশন এ ভুল ডাটা দেওয়া হয়েছে। দয়া করে সঠিক ডাটা দিন।');
         }
     }
-    
+
     public function captcha() {
         return ["status" => true, 'src' => \Captcha::src('default')];
     }
