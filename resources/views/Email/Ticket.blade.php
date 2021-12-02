@@ -17,7 +17,7 @@
                 
 
 
-                <p style=" color: #000; display: block; background-color: yellow; margin: 30px auto; text-decoration: none; font-size: 1.5rem; text-align: center; padding: 10px 0px; width: 90%; border-radius: 10px;">Ticket No: {{{{$details['ticket']}}}}</p>
+                <p style=" color: #000; display: block; background-color: yellow; margin: 30px auto; text-decoration: none; font-size: 1.5rem; text-align: center; padding: 10px 0px; width: 90%; border-radius: 10px;">Ticket No: {{$details['ticket']}}</p>
 
                 <p>ধন‌্যবাদান্তে<br/>ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট সাপোর্ট টিম</p>
             </td>
