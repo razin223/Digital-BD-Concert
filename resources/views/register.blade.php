@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="form-group">
                                             <b style="">মোবাইল নম্বর (১১ ডিজিট)</b><br/>
-                                            <input type="text" name="mobile_number" class="form-control form-control-lg" value="{{old('mobile_number')}}" id="exampleInputEmail1" maxlength="11" placeholder="মোবাইল নম্বর ইংরেজিতে লিখুন" required>
+                                            <input type="number" name="mobile_number" class="form-control form-control-lg" value="{{old('mobile_number')}}" id="exampleInputEmail1" maxlength="11" placeholder="মোবাইল নম্বর ইংরেজিতে লিখুন" required>
                                         </div>
                                         <div class="form-group">
                                             <b style="">জন্মতারিখ</b><br/>

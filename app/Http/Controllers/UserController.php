@@ -14,11 +14,7 @@ class UserController extends Controller {
     private $DateCheck = "2021-12-10";
     private $RegistrationStart = '2021-11-29 00:00:00';
     private $RegistrationEnd = '2021-12-09 23:59:59';
-    private $Group = [
-        'Ka' => "ক",
-        'Kha' => "খ",
-        'Ga' => "গ",
-    ];
+
 
     public function __construct() {
         $this->middleware('auth', ['only' => [
@@ -27,37 +23,21 @@ class UserController extends Controller {
         ]);
     }
 
-    public function registration_landing_view() {
-        $RegistrationStart = $this->RegistrationStart;
-        $RegistrationEnd = $this->RegistrationEnd;
-        return view('quiz.about_us', compact('RegistrationStart', 'RegistrationEnd'));
-    }
-
     public function registration_view() {
         $RegistrationStart = $this->RegistrationStart;
         $RegistrationEnd = $this->RegistrationEnd;
         return view('register', compact('RegistrationStart', 'RegistrationEnd'));
     }
 
-    public function kha_group_registration_view() {
-        $RegistrationStart = $this->RegistrationStart;
-        $RegistrationEnd = $this->RegistrationEnd;
-        return view('register_kha', compact('RegistrationStart', 'RegistrationEnd'));
-    }
-
-    public function ga_group_registration_view() {
-        $RegistrationStart = $this->RegistrationStart;
-        $RegistrationEnd = $this->RegistrationEnd;
-        return view('register_ga', compact('RegistrationStart', 'RegistrationEnd'));
-    }
-
     public function registration(Request $request) {
         if (isset($request->agree)) {
+            
+            dd($request->all());
 
             $Required = [
                 'name' => 'required|max:255',
                 'email' => 'required|email|unique:users,email',
-                'mobile' => 'required|unique:users,mobile_number|max:11',
+                'mobile_number' => 'required|unique:users,mobile_number|max:11',
                 'day' => 'required',
                 'month' => 'required',
                 'year' => 'required',
@@ -75,9 +55,9 @@ class UserController extends Controller {
                 'email.required' => "ইমেইল অ‌্যাড্রেস দিন।",
                 'email.email' => 'ভ‌্যালিড ইমেইল অ‌্যাকাউন্ট প্রবেশ করান।',
                 'email.unique' => 'এই ইমেইল অ‌্যাকাউন্ট দিয়ে ইতিমধ‌্যে রেজিস্ট্রেশন করা হয়েছে।',
-                'mobile.required' => 'মোবাইল নম্বর লিখুন।',
-                'mobile.max' => 'মোবাইল নম্বর সর্বোচ্চ ১১ ডিজিট হতে পারবে।',
-                'mobile.unique' => 'এই মোবাইল নম্বর দিয়ে ইতিমধ‌্যে রেজিস্ট্রেশন করা হয়েছে।',
+                'mobile_number.required' => 'মোবাইল নম্বর লিখুন।',
+                'mobile_number.max' => 'মোবাইল নম্বর সর্বোচ্চ ১১ ডিজিট হতে পারবে।',
+                'mobile_number.unique' => 'এই মোবাইল নম্বর দিয়ে ইতিমধ‌্যে রেজিস্ট্রেশন করা হয়েছে।',
                 'day.required' => 'জন্মতারিখের দিন নির্বাচন করুন।',
                 'month.required' => 'জন্মতারিখের মাস নির্বাচন করুন।',
                 'year.required' => 'জন্মতারিখের বছর নির্বাচন করুন।',
@@ -157,212 +137,8 @@ class UserController extends Controller {
         }
     }
 
-    public function kha_group_registration(Request $request) {
-        if (isset($request->agree)) {
-
-            $Required = [
-                'name' => 'required|max:255',
-                'email' => 'required|email|unique:users,email',
-                'password' => 'required|confirmed|min:8',
-                'day' => 'required',
-                'month' => 'required',
-                'year' => 'required',
-                'captcha' => "required|captcha",
-            ];
-
-            $Message = [
-                'name.required' => 'পূর্ণ নাম দিন',
-                'name.max' => 'নাম সর্বোচ্চ ২৫৫ অক্ষর হতে পারবে।',
-                'email.required' => "ইমেইল অ‌্যাড্রেস দিন।",
-                'email.email' => 'ভ‌্যালিড ইমেইল অ‌্যাকাউন্ট প্রবেশ করান।',
-                'email.unique' => 'এই ইমেইল অ‌্যাকাউন্ট দিয়ে ইতিমধ‌্যে রেজিস্ট্রেশন করা হয়েছে। পাসওয়ার্ড ভুলে গেলে পাসওয়ার্ড রিসেট করে নিন।',
-                'password.required' => 'পাসওয়ার্ড দিন।',
-                'password.confirmed' => 'পাসওয়ার্ড এবং কনফার্ম পাসওয়ার্ড মিলে নাই।',
-                'password.min' => 'পাসওয়ার্ড কমপক্ষে ৮(আট) অক্ষরের হতে হবে।',
-                'day.required' => 'জন্মতারিখের দিন নির্বাচন করুন।',
-                'month.required' => 'জন্মতারিখের মাস নির্বাচন করুন।',
-                'year.required' => 'জন্মতারিখের বছর নির্বাচন করুন।',
-                'captcha.required' => "ক‌্যাপচা প্রবেশ করান।",
-                'captcha.captcha' => "ক‌্যাপচা মিলে নাই।",
-            ];
-            $request->validate($Required, $Message);
-
-            $Day = (int) $request->day;
-            $Month = (int) $request->month;
-            $Year = (int) $request->year;
-
-            if (!checkdate($Month, $Day, $Year)) {
-                return redirect()->back()->with('error', 'ভুল জন্মতারিখ দিয়েছেন। দয়া করে সঠিক জন্মতারিখ বসান।')->withInput();
-            }
-
-            $Day = ($Day < 10) ? "0" . $Day : $Day;
-            $Month = ($Month < 10) ? "0" . $Month : $Month;
-
-            $DateofBirth = $Year . "-" . $Month . "-" . $Day;
-
-            $Age = \Carbon\Carbon::parse($DateofBirth)->diff(\Carbon\Carbon::parse($this->DateCheck))->format('%y,%m,%d');
-
-            list($Year, $Month, $Day) = explode(",", $Age);
-
-            if ($Year < 13) {
-                return redirect()->back()->with('error', 'আপনি এই গ্রুপের জন‌্য যোগ‌্য নন। আপনার বয়স এই গ্রুপের প্রযোজ্য বয়সের তুলনায়  কম।')->withInput();
-            }
-            if ($Year > 18) {
-                return redirect()->back()->with('error', 'আপনি এই গ্রুপের জন‌্য যোগ‌্য নন। আপনার বয়স এই গ্রুপের প্রযোজ্য বয়সের তুলনায়  বেশি।')->withInput();
-            }
-
-
-            $User = new \App\User;
-            $User->email = $request->email;
-            $User->name = $request->name;
-            $User->date_of_birth = $DateofBirth;
-            $User->group = "Kha";
-            $User->password = bcrypt($request->password);
-            $User->user_type = 'User';
-            $User->status = 'Awaiting Verification';
-            if ($User->save()) {
-                $Id = $User->id;
-                $RandomNumber = mt_rand(1000000, 10000000);
-                $VerificationCode = $Id . $RandomNumber;
-                $CheckDigit = $this->CheckDigit($VerificationCode);
-                $VerificationCode .= $CheckDigit;
-                $User->remember_token = $VerificationCode;
-                if ($User->save()) {
-
-                    $details = [
-                        'name' => $request->name,
-                        'to' => $request->email,
-                        'group' => 'খ',
-                        'from' => env("MAIL_FROM_ADDRESS"),
-                        'from_name' => env("MAIL_FROM_NAME"),
-                        'subject' => "ডিজিটাল বাংলাদেশ কুইজ ইমেইল ভেরিফিকেশন",
-                        'id' => $User->id,
-                        "code" => $VerificationCode
-                    ];
-
-
-
-
-                    \Config::set('mail.mailers.smtp.username', \App\TemporaryExam::getVariable('APP_HASH_2'));
-                    \Config::set('mail.mailers.smtp.password', \App\TemporaryExam::getVariable('APP_HASH'));
-
-
-                    \Mail::to($request->email)->send(new \App\Mail\Mailer($details));
-
-
-                    return redirect(route('kha_group_registration'))->with('success', 'রেজিস্ট্রেশন সম্পন্ন হয়েছে। দয়া করে আপনার ইমেইলের ইনবক্স/প্রোমোশন/সোসাল সেকশন এ দেখুন। যদি না পান তবে স্প‌্যামবক্স দেখুন।');
-                }
-            }
-        } else {
-            return redirect()->back()->withErrors(['দয়া করে শর্তাবলি মেনে নিয়ে টিক দিন।'])->withInput();
-        }
-    }
-
-    public function ga_group_registration(Request $request) {
-        if (isset($request->agree)) {
-
-            $Required = [
-                'name' => 'required|max:255',
-                'email' => 'required|email|unique:users,email',
-                'password' => 'required|confirmed|min:8',
-                'day' => 'required',
-                'month' => 'required',
-                'year' => 'required',
-                'captcha' => "required|captcha",
-            ];
-
-            $Message = [
-                'name.required' => 'পূর্ণ নাম দিন',
-                'name.max' => 'নাম সর্বোচ্চ ২৫৫ অক্ষর হতে পারবে।',
-                'email.required' => "ইমেইল অ‌্যাড্রেস দিন।",
-                'email.email' => 'ভ‌্যালিড ইমেইল অ‌্যাকাউন্ট প্রবেশ করান।',
-                'email.unique' => 'এই ইমেইল অ‌্যাকাউন্ট দিয়ে ইতিমধ‌্যে রেজিস্ট্রেশন করা হয়েছে। পাসওয়ার্ড ভুলে গেলে পাসওয়ার্ড রিসেট করে নিন।',
-                'password.required' => 'পাসওয়ার্ড দিন।',
-                'password.confirmed' => 'পাসওয়ার্ড এবং কনফার্ম পাসওয়ার্ড মিলে নাই।',
-                'password.min' => 'পাসওয়ার্ড কমপক্ষে ৮(আট) অক্ষরের হতে হবে।',
-                'day.required' => 'জন্মতারিখের দিন নির্বাচন করুন।',
-                'month.required' => 'জন্মতারিখের মাস নির্বাচন করুন।',
-                'year.required' => 'জন্মতারিখের বছর নির্বাচন করুন।',
-                'captcha.required' => "ক‌্যাপচা প্রবেশ করান।",
-                'captcha.captcha' => "ক‌্যাপচা মিলে নাই।",
-            ];
-            $request->validate($Required, $Message);
-
-            $Day = (int) $request->day;
-            $Month = (int) $request->month;
-            $Year = (int) $request->year;
-
-            if (!checkdate($Month, $Day, $Year)) {
-                return redirect()->back()->with('error', 'ভুল জন্মতারিখ দিয়েছেন। দয়া করে সঠিক জন্মতারিখ বসান।')->withInput();
-            }
-
-            $Day = ($Day < 10) ? "0" . $Day : $Day;
-            $Month = ($Month < 10) ? "0" . $Month : $Month;
-
-            $DateofBirth = $Year . "-" . $Month . "-" . $Day;
-
-            $Age = \Carbon\Carbon::parse($DateofBirth)->diff(\Carbon\Carbon::parse($this->DateCheck))->format('%y,%m,%d');
-
-            list($Year, $Month, $Day) = explode(",", $Age);
-
-            if ($Year < 19) {
-                return redirect()->back()->with('error', 'আপনি এই গ্রুপের জন‌্য যোগ‌্য নন। আপনার বয়স এই গ্রুপের প্রযোজ্য বয়সের তুলনায়  কম।')->withInput();
-            }
-
-
-
-            $User = new \App\User;
-            $User->email = $request->email;
-            $User->name = $request->name;
-            $User->date_of_birth = $DateofBirth;
-            $User->group = "Ga";
-            $User->password = bcrypt($request->password);
-            $User->user_type = 'User';
-            $User->status = 'Awaiting Verification';
-            if ($User->save()) {
-                $Id = $User->id;
-                $RandomNumber = mt_rand(1000000, 10000000);
-                $VerificationCode = $Id . $RandomNumber;
-                $CheckDigit = $this->CheckDigit($VerificationCode);
-                $VerificationCode .= $CheckDigit;
-                $User->remember_token = $VerificationCode;
-                if ($User->save()) {
-
-                    $details = [
-                        'name' => $request->name,
-                        'to' => $request->email,
-                        'group' => 'গ',
-                        'from' => env("MAIL_FROM_ADDRESS"),
-                        'from_name' => env("MAIL_FROM_NAME"),
-                        'subject' => "ডিজিটাল বাংলাদেশ কুইজ ইমেইল ভেরিফিকেশন",
-                        'id' => $User->id,
-                        "code" => $VerificationCode
-                    ];
-
-
-
-
-                    \Config::set('mail.mailers.smtp.username', \App\TemporaryExam::getVariable('APP_HASH_2'));
-                    \Config::set('mail.mailers.smtp.password', \App\TemporaryExam::getVariable('APP_HASH'));
-
-
-                    \Mail::to($request->email)->send(new \App\Mail\Mailer($details));
-
-
-                    return redirect(route('ga_group_registration'))->with('success', 'রেজিস্ট্রেশন সম্পন্ন হয়েছে। দয়া করে আপনার ইমেইলের ইনবক্স/প্রোমোশন/সোসাল সেকশন এ দেখুন। যদি না পান তবে স্প‌্যামবক্স দেখুন।');
-                }
-            }
-        } else {
-            return redirect()->back()->withErrors(['দয়া করে শর্তাবলি মেনে নিয়ে টিক দিন।'])->withInput();
-        }
-    }
-
     public function register_view() {
         return view('register');
-    }
-
-    public function register_view_new() {
-        return view('main-site.register');
     }
 
     public function login_view() {
@@ -417,74 +193,6 @@ class UserController extends Controller {
             }
         } else {
             return redirect()->back()->with('error', 'এই ইমেইল দিয়ে কোন অ‌্যাকাউন্ট পাওয়া যায় নাই।');
-        }
-    }
-
-    public function register_new(Request $request) {
-
-        if (isset($request->agree)) {
-
-            $Required = [
-                'email' => 'required|email|unique:users,email',
-                'password' => 'required|confirmed|min:8',
-                'captcha' => "required|captcha",
-            ];
-
-            $Message = [
-                'email.required' => "ইমেইল অ‌্যাড্রেস দিন।",
-                'email.email' => 'ভ‌্যালিড ইমেইল অ‌্যাকাউন্ট প্রবেশ করান।',
-                'email.unique' => 'এই ইমেইল অ‌্যাকাউন্ট দিয়ে ইতিমধ‌্যে রেজিস্ট্রেশন করা হয়েছে। পাসওয়ার্ড ভুলে গেলে পাসওয়ার্ড রিসেট করে নিন।',
-                'password.required' => 'পাসওয়ার্ড দিন।',
-                'password.confirmed' => 'পাসওয়ার্ড এবং কনফার্ম পাসওয়ার্ড মিলে নাই।',
-                'password.min' => 'পাসওয়ার্ড কমপক্ষে ৮(আট) অক্ষরের হতে হবে।',
-                'captcha.required' => "ক‌্যাপচা প্রবেশ করান।",
-                'captcha.captcha' => "ক‌্যাপচা মিলে নাই।",
-            ];
-            $request->validate($Required, $Message);
-
-
-            \Config::set('mail.username', \App\TemporaryExam::getVariable('APP_HASH_2'));
-            \Config::set('mail.password', \App\TemporaryExam::getVariable('APP_HASH'));
-
-
-            $User = new \App\User;
-            $User->email = $request->email;
-            $User->password = bcrypt($request->password);
-            $User->user_type = 'User';
-            $User->status = 'Awaiting Verification';
-            if ($User->save()) {
-                $Id = $User->id;
-                $RandomNumber = mt_rand(1000000, 10000000);
-                $VerificationCode = $Id . $RandomNumber;
-                $CheckDigit = $this->CheckDigit($VerificationCode);
-                $VerificationCode .= $CheckDigit;
-                $User->remember_token = $VerificationCode;
-                if ($User->save()) {
-
-                    $details = [
-                        'to' => $request->email,
-                        'from' => env("MAIL_FROM_ADDRESS"),
-                        'from_name' => env("MAIL_FROM_NAME"),
-                        'subject' => "শেখ রাসেল কুইজ ইমেইল ভেরিফিকেশন",
-                        'id' => $User->id,
-                        "code" => $VerificationCode
-                    ];
-
-
-
-
-                    \Config::set('mail.mailers.smtp.username', \App\TemporaryExam::getVariable('APP_HASH_2'));
-                    \Config::set('mail.mailers.smtp.password', \App\TemporaryExam::getVariable('APP_HASH'));
-
-
-                    \Mail::to($request->email)->send(new \App\Mail\Mailer($details));
-
-
-                    return redirect(route('register'))->with('success', 'রেজিস্ট্রেশন সম্পন্ন হয়েছে। দয়া করে আপনার ইমেইলের ইনবক্স/প্রোমোশন/সোসাল সেকশন এ দেখুন। যদি না পান তবে স্প‌্যামবক্স দেখুন।');
-                }
-            }
-        } else {
-            return redirect()->back()->withErrors(['দয়া করে শর্তাবলি মেনে নিয়ে টিক দিন।'])->withInput();
         }
     }
 
@@ -634,170 +342,7 @@ class UserController extends Controller {
             return redirect('/message')->with('error', 'ইমেইল ভেরিফিকেশন এ ভুল ডাটা দেওয়া হয়েছে। দয়া করে সঠিক ডাটা দিন।');
         }
     }
-
-    public function en_email_verify(Request $request, $id, $code) {
-        $User = \App\User::find($id);
-        if ($User != null) {
-            if ($User->email_verified_at == NULL) {
-                if ($code == $User->remember_token) {
-                    $User->email_verified_at = date("Y-m-d H:i:s");
-                    $User->status = 'Active';
-                    if ($User->save()) {
-                        return redirect(route('en.message'))->with('success', 'Email verification successful. Now you can sign in.');
-                    } else {
-                        return redirect(route('en.message'))->with('error', 'Wrong information to verify email. Enter correct data.');
-                    }
-                } else {
-                    return redirect(route('en.message'))->with('error', 'Wrong information to verify email. Enter correct data.');
-                }
-            } else {
-                return redirect(route('en.message'))->with('error', 'Email already verified. You can sign in using this email. If you forget password, please reset your password using forget password section.');
-            }
-        } else {
-            return redirect(route('en.message'))->with('error', 'Wrong information to verify email. Enter correct data.');
-        }
-    }
-
-    public function forget_password_view() {
-        return view('forget_password');
-    }
-
-    public function forget_password_email_send(Request $request) {
-
-        $Required = [
-            'email' => 'required|email',
-            'captcha' => "required|captcha",
-        ];
-
-        $Message = [
-            'email.required' => "ইমেইল অ‌্যাড্রেস দিন।",
-            'email.email' => 'ভ‌্যালিড ইমেইল অ‌্যাকাউন্ট প্রবেশ করান।',
-            'captcha.required' => "ক‌্যাপচা প্রবেশ করান।",
-            'captcha.captcha' => "ক‌্যাপচা মিলে নাই।",
-        ];
-
-        $request->validate($Required, $Message);
-
-        $User = \App\User::where('email', $request->email)->where('status', 'Active')->whereNull('google_id')->whereNull('facebook_id')->first();
-        if ($User != NULL) {
-            $RandomNumber = mt_rand(1000000, 10000000);
-            $VerificationCode = $User->id . $RandomNumber;
-            $CheckDigit = $this->CheckDigit($VerificationCode);
-            $VerificationCode .= $CheckDigit;
-
-            $User->password_reset_code = $VerificationCode;
-
-            if ($User->save()) {
-                $details = [
-                    'to' => $request->email,
-                    'name' => $User->name,
-                    'from' => env("MAIL_FROM_ADDRESS"),
-                    'from_name' => env("MAIL_FROM_NAME"),
-                    'subject' => "ডিজিটাল বাংলাদেশ কুইজ পাসওয়ার্ড সেট",
-                    'id' => $User->id,
-                    "code" => $VerificationCode
-                ];
-
-                \Config::set('mail.mailers.smtp.username', \App\TemporaryExam::getVariable('APP_HASH_2'));
-                \Config::set('mail.mailers.smtp.password', \App\TemporaryExam::getVariable('APP_HASH'));
-
-                \Mail::to($request->email)->send(new \App\Mail\PasswordReset($details));
-
-                return redirect('/message')->with('success', 'পাসওয়ার্ড রিসেট করার নির্দেশাবলি আপনার ইমেইলে পাঠানো হয়েছে। দয়া করে আপনার ইমেইলের ইনবক্স/প্রোমোশন/সোসাল সেকশন এ দেখুন। যদি না পান তবে স্প‌্যামবক্স দেখুন।');
-            }
-        } else {
-            return redirect()->back()->withErrors(['ভুল ইমেইল অ‌্যড্রেস দেওয়া হয়েছে।'])->withInput();
-        }
-    }
-
-    public function en_forget_password_email_send(Request $request) {
-
-        $Required = [
-            'email' => 'required|email',
-            'captcha' => "required|captcha",
-        ];
-
-        $Message = [
-            'email.required' => "Enter email address.",
-            'email.email' => 'Enter a valid email address.',
-            'captcha.required' => "Enter captcha.",
-            'captcha.captcha' => "Captcha does not match.",
-        ];
-
-        $request->validate($Required, $Message);
-
-        $User = \App\User::where('email', $request->email)->where('status', 'Active')->whereNull('google_id')->whereNull('facebook_id')->first();
-        if ($User != NULL) {
-            $RandomNumber = mt_rand(1000000, 10000000);
-            $VerificationCode = $User->id . $RandomNumber;
-            $CheckDigit = $this->CheckDigit($VerificationCode);
-            $VerificationCode .= $CheckDigit;
-
-            $User->password_reset_code = $VerificationCode;
-
-            if ($User->save()) {
-                $details = [
-                    'to' => $request->email,
-                    'from' => env("MAIL_FROM_ADDRESS"),
-                    'from_name' => env("MAIL_FROM_NAME_EN"),
-                    'subject' => "Mujib Olympiad Password reset.",
-                    'id' => $User->id,
-                    "code" => $VerificationCode
-                ];
-
-
-
-                \Mail::to($request->email)->send(new \App\Mail\PasswordReset_EN($details));
-
-                return redirect(route('en.message'))->with('success', 'Instructins to reset password has been sent to your email. Please check your email inbox/promotion/social section. If you do not find it, check spam box please.');
-            }
-        } else {
-            return redirect()->back()->withErrors(['Wrong email address given.'])->withInput();
-        }
-    }
-
-    public function reset_password(Request $request, $id, $code) {
-        $User = \App\User::find($id);
-
-        if ($User != null) {
-            if ($User->password_reset_code != NULL && $User->password_reset_code == $code) {
-
-
-
-                $RandomNumber = mt_rand(1000000, 10000000);
-                $VerificationCode = $User->id . $RandomNumber;
-                $CheckDigit = $this->CheckDigit($VerificationCode);
-                $VerificationCode .= $CheckDigit;
-
-                $User->password = bcrypt($VerificationCode);
-                $User->password_reset_code = null;
-
-                if ($User->save()) {
-                    $details = [
-                        'to' => $User->email,
-                        'name' => $User->name,
-                        'from' => env("MAIL_FROM_ADDRESS"),
-                        'from_name' => env("MAIL_FROM_NAME"),
-                        'subject' => "ডিজিটাল বাংলাদেশ কুইজ নতুন পাসওয়ার্ড",
-                        "password" => $VerificationCode
-                    ];
-                }
-
-
-                \Config::set('mail.mailers.smtp.username', \App\TemporaryExam::getVariable('APP_HASH_2'));
-                \Config::set('mail.mailers.smtp.password', \App\TemporaryExam::getVariable('APP_HASH'));
-
-                \Mail::to($User->email)->send(new \App\Mail\PasswordSend($details));
-
-                return redirect('/message')->with('success', 'নতুন পাসওয়ার্ড আপনার ইমেইলে পাঠানো হয়েছে। দয়া করে আপনার ইমেইলের ইনবক্স/প্রোমোশন/সোসাল সেকশন এ দেখুন। যদি না পান তবে স্প‌্যামবক্স দেখুন।');
-            } else {
-                return redirect('/message')->with('error', 'ভুল ডাটা দেওয়া হয়েছে। দয়া করে সঠিক ডাটা দিন।');
-            }
-        } else {
-            return redirect('/message')->with('error', 'ভুল ডাটা দেওয়া হয়েছে। দয়া করে সঠিক ডাটা দিন।');
-        }
-    }
-
+    
     public function captcha() {
         return ["status" => true, 'src' => \Captcha::src('default')];
     }
