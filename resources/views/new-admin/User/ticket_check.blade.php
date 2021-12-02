@@ -11,17 +11,18 @@
                         <div class="col-md-4">
                             <b>Ticket Code</b>
                             <input type="text" name="ticket" value="" class="form-control"/>
-                        </div><br/><br/>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-4 text-center">
                             <input type="submit" value="Search" class="btn btn-primary"/>
                         </div>
                     </div>
-                    
+
                 </form>
             </div>
-            
-            <?php
 
+            <?php
             ?>
         </div>
 
