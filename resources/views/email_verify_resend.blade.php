@@ -41,16 +41,12 @@
 
                                     @include("new-admin.fixed-layout.captcha")
                                     <div class="mt-3">
-                                        <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="পুনরায় ভেরিফিকেশন ইমেইল পাঠান" style="background-color: #1B783C; border-radius: 10px"/>
+                                        <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="পুনরায় ভেরিফিকেশন ইমেইল পাঠান" style="background-color: #3333cc; border-radius: 10px"/>
                                     </div>
-
-                                    <div class="text-center mt-4 font-weight-light"> অ‌্যাকাউন্ট আছে? <a href="{{route('login')}}" class="text-primary">সাইন ইন করুন</a>
-                                    </div>
-
-                                    <div class="text-center mt-4 font-weight-light"> সাইন আপ করুন &rarr; <a href="{{route('ka_group_registration')}}" class="text-primary"> গ্রুপ ক</a> <a href="{{route('kha_group_registration')}}" class="text-primary"> গ্রুপ খ</a> <a href="{{route('ga_group_registration')}}" class="text-primary"> গ্রুপ গ</a>
+                                    <div class="text-center mt-4 font-weight-light"><a href="{{route('registration')}}" class="text-primary"> রেজিস্ট্রেশন করুন</a>
                                     </div>
                                     <div class="text-center mt-4 font-weight-light">
-                                        <button type="button" onclick="window.location = 'https://digitalbangladesh.gov.bd'" class="btn btn-block btn-warning auth-form-btn" style="background-color: #916226; border-radius: 10px">
+                                        <button type="button" onclick="window.location = 'https://digitalbangladesh.gov.bd'" class="btn btn-block btn-warning auth-form-btn" style="background-color: #006622; border-radius: 10px">
                                             <i class="icon-home mr-2"></i>ওয়েবসাইটে ফিরে যান </button>
                                     </div>
                                 </form>
