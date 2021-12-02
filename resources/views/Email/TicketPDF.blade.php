@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     </head>
     <body>
-        <table style="font-family:  'Noto Sans Bengali','Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;border: solid lightgray 1px; background-color: transparent; max-width: 450px; margin:  0px auto" cellpadding="0" cellspacing="0">
+        <table style="font-family: 'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;border: solid lightgray 1px; background-color: transparent; max-width: 600; margin:  0px auto" cellpadding="0" cellspacing="0">
             <tbody>
                 <tr>
                     <td style="text-align: center">
@@ -20,28 +20,18 @@
 
                     <td style="padding: 10px; text-align: justify">
 
-                        <h3 style="text-align: center">ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট</h3>
+                        <h2 style="text-align: center; color: red">CONCERT TICKET</h2>
 
-                        <table style="border: solid black 1px" cellpadding="0" cellspacing="0">
-                            <tr>
-                                <td>নাম: </td>
-                                <td>{{$details['name']}}</td>
-                            </tr>
-                            <tr>
-                                <td>ইমেইল: </td>
-                                <td>{{$details['email']}}</td>
-                            </tr>
-                            <tr>
-                                <td>মোবাইল নং: </td>
-                                <td>{{$details['mobile_number']}}</td>
-                            </tr>
-                        </table>
+                        <p style="text-align: center">
+                            <img src="{{url("/")}}/assets/digital-bd-day.jpeg" style="width: 300px; margin-bottom: 30px;"/>
+                        </p>
+
 
                         <p style=" color: #000; display: block; background-color: yellow; margin: 30px auto; text-decoration: none; font-size: 1.5rem; text-align: center; padding: 10px 0px; width: 90%; border-radius: 10px;">Ticket No: {{$details['ticket']}}</p>
 
                         <p>&nbsp;</p>
 
-                        <p><img src="data:image/png;base64, {!! $details['ticket_qr'] !!}"></p>
+                        <p style="text-align: center"><img src="data:image/png;base64, {!! $details['ticket_qr'] !!}"></p>
                     </td>
                 </tr>
                 <tr>
