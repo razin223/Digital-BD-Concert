@@ -11,7 +11,7 @@
             <td style="padding: 10px; text-align: justify">
 
                 <h3 style="text-align: center; color:  #006622">Digital Bangladesh Day 2021</h3>
-                <h2 style="text-align: center; color:  FF0000; margin-top: 10px">TICKET</h2>
+                <h2 style="text-align: center; color:  FF0000; margin-top: 10px">CONCERT TICKET</h2>
 
 
 
