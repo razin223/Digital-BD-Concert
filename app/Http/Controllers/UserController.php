@@ -315,6 +315,7 @@ class UserController extends Controller {
                             'to' => $User->email,
                             'name' => $User->name,
                             'ticket' => $User->ticket,
+                            'pdf' => $PDF,
                             'from' => env("MAIL_FROM_ADDRESS"),
                             'from_name' => env("MAIL_FROM_NAME"),
                             'subject' => "ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট টিকিট | টিকিট নং: " . $User->ticket,
