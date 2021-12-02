@@ -23,7 +23,7 @@
             </div>
 
             <?php
-            if (isset(request()->input('ticket'))) {
+            if (!empty(request()->input('ticket'))) {
                 $Class = "bg-danger";
                 if ($Data != null) {
                     $Class = "bg-success";
