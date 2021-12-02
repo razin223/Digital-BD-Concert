@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\MobileNoValidatorTrait;
 
 class UserController extends Controller {
+    
+    use MobileNoValidatorTrait;
 
     private $DateCheck = "2021-12-10";
     private $RegistrationStart = '2021-11-29 00:00:00';
@@ -48,16 +51,21 @@ class UserController extends Controller {
         return view('register_ga', compact('RegistrationStart', 'RegistrationEnd'));
     }
 
-    public function ka_group_registration(Request $request) {
+    public function registration(Request $request) {
         if (isset($request->agree)) {
 
             $Required = [
                 'name' => 'required|max:255',
                 'email' => 'required|email|unique:users,email',
-                'password' => 'required|confirmed|min:8',
+                'mobile' => 'required|unique:users,mobile_number|max:11',
                 'day' => 'required',
                 'month' => 'required',
                 'year' => 'required',
+                'occupation'=>'required',
+                'institute'=>'required|max:512',
+                'gender'=>'required',
+                'district_id'=>'required',
+                'address'=>'required|max: 255',
                 'captcha' => "required|captcha",
             ];
 
@@ -66,13 +74,20 @@ class UserController extends Controller {
                 'name.max' => 'নাম সর্বোচ্চ ২৫৫ অক্ষর হতে পারবে।',
                 'email.required' => "ইমেইল অ‌্যাড্রেস দিন।",
                 'email.email' => 'ভ‌্যালিড ইমেইল অ‌্যাকাউন্ট প্রবেশ করান।',
-                'email.unique' => 'এই ইমেইল অ‌্যাকাউন্ট দিয়ে ইতিমধ‌্যে রেজিস্ট্রেশন করা হয়েছে। পাসওয়ার্ড ভুলে গেলে পাসওয়ার্ড রিসেট করে নিন।',
-                'password.required' => 'পাসওয়ার্ড দিন।',
-                'password.confirmed' => 'পাসওয়ার্ড এবং কনফার্ম পাসওয়ার্ড মিলে নাই।',
-                'password.min' => 'পাসওয়ার্ড কমপক্ষে ৮(আট) অক্ষরের হতে হবে।',
+                'email.unique' => 'এই ইমেইল অ‌্যাকাউন্ট দিয়ে ইতিমধ‌্যে রেজিস্ট্রেশন করা হয়েছে।',
+                'mobile.required' => 'মোবাইল নম্বর লিখুন।',
+                'mobile.max' => 'মোবাইল নম্বর সর্বোচ্চ ১১ ডিজিট হতে পারবে।',
+                'mobile.unique' => 'এই মোবাইল নম্বর দিয়ে ইতিমধ‌্যে রেজিস্ট্রেশন করা হয়েছে।',
                 'day.required' => 'জন্মতারিখের দিন নির্বাচন করুন।',
                 'month.required' => 'জন্মতারিখের মাস নির্বাচন করুন।',
                 'year.required' => 'জন্মতারিখের বছর নির্বাচন করুন।',
+                 'occupation.required'=>'পেশা নির্বাচন করুন।',
+                'institute.required'=>'প্রতিষ্ঠানের নাম লিখুন।',
+                'institute.max'=>'প্রতিষ্ঠানের নাম সর্বোচ্চ ৫১২ অক্ষর হতে পারবে।',
+                'gender.required'=>'লিঙ্গ নির্বাচন করুন।',
+                'district_id.required'=>'জেলা নির্বাচন করুন।',
+                'address.required'=>'ঠিকানা লিখুন।',
+                'address.max'=>'ঠিকানা সর্বোচ্চ ২৫৫ অক্ষর হতে পারবে।',
                 'captcha.required' => "ক‌্যাপচা প্রবেশ করান।",
                 'captcha.captcha' => "ক‌্যাপচা মিলে নাই।",
             ];
@@ -90,16 +105,9 @@ class UserController extends Controller {
             $Month = ($Month < 10) ? "0" . $Month : $Month;
 
             $DateofBirth = $Year . "-" . $Month . "-" . $Day;
-
-            $Age = \Carbon\Carbon::parse($DateofBirth)->diff(\Carbon\Carbon::parse($this->DateCheck))->format('%y,%m,%d');
-
-            list($Year, $Month, $Day) = explode(",", $Age);
-
-            if ($Year >= 13) {
-                return redirect()->back()->with('error', 'আপনি এই গ্রুপের জন‌্য যোগ‌্য নন। আপনার বয়স এই গ্রুপের প্রযোজ্য বয়সের তুলনায় বেশি।')->withInput();
-            }
-            if ($Year < 8) {
-                return redirect()->back()->with('error', 'আপনি এই গ্রুপের জন‌্য যোগ‌্য নন। আপনার বয়স এই গ্রুপের প্রযোজ্য বয়সের তুলনায় কম।')->withInput();
+            
+            if(!$this->mobileNoValidator($request->mobile_number)){
+                return redirect()->back()->with('error', 'ভুল মোবাইল নম্বর দিয়েছেন। দয়া করে সঠিক মোবাইল নম্বর লিখুন।')->withInput();
             }
 
 

@@ -55,7 +55,7 @@
                                 <?php
                                 if (time() < strtotime($RegistrationEnd . "+06:00") && time() > strtotime($RegistrationStart . "+06:00")) {
                                     ?>
-                                    <form class="pt-3" method="post" action="<?php echo route('ka_group_registration') ?>">
+                                    <form class="pt-3" method="post" action="<?php echo route('registration') ?>">
                                         @csrf
                                         @include("template-admin.fixed-layout.message")
                                         <div class="form-group">
@@ -118,11 +118,11 @@
                                         </div>
                                         <div class="form-group">
                                             <b style="" id="institute_name_header">প্রতিষ্ঠান</b><br/>
-                                            <input type="text" name="address" id="institute" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="প্রতিষ্ঠান এর নাম লিখুন" required>
+                                            <input type="text" name="institute" id="institute" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="প্রতিষ্ঠান এর নাম লিখুন" required>
                                         </div>
                                         <div class="form-group">
                                             <b style="">লিঙ্গ</b><br/>
-                                            <select name="gender" id="occupation" required class="form-conrol" style="width: 100%">
+                                            <select name="gender"  required class="form-conrol" style="width: 100%">
                                                 <option value="">লিঙ্গ নির্বাচন করুন</option>
                                                 <?php
                                                 foreach (\App\User::$Gender as $key => $value) {

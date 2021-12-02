@@ -22,8 +22,8 @@ Route::get("/quiz/content_guest/{id}", function($id) {
 })->name('content_guest');
 
 
-Route::get("/ka_group_registration", 'UserController@ka_group_registration_view')->name('ka_group_registration');
-Route::post("/ka_group_registration", 'UserController@ka_group_registration');
+Route::get("/registration", 'UserController@registration_view')->name('registration');
+Route::post("/registration", 'UserController@registration');
 
 Route::get("/kha_group_registration", 'UserController@kha_group_registration_view')->name('kha_group_registration');
 Route::post("/kha_group_registration", 'UserController@kha_group_registration');
