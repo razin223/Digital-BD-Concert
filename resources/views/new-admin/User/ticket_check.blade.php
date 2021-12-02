@@ -38,26 +38,40 @@
                                         <h3 class="text-white {{$Class}} ">DBD2021-{{request()->input('ticket')}}</h3>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Name: </td>
-                                    <td>{{$Data->name}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Email: </td>
-                                    <td>{{$Data->email}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Mobile: </td>
-                                    <td>{{$Data->mobile_no}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Gender: </td>
-                                    <td>{{$Data->gender}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Occupation: </td>
-                                    <td>{{$Data->occupation}}</td>
-                                </tr>
+                                <?php
+                                if ($Data != null) {
+                                    ?>
+                                    <tr>
+                                        <td>Name: </td>
+                                        <td>{{$Data->name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email: </td>
+                                        <td>{{$Data->email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile: </td>
+                                        <td>{{$Data->mobile_no}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gender: </td>
+                                        <td>{{$Data->gender}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Occupation: </td>
+                                        <td>{{$Data->occupation}}</td>
+                                    </tr>
+                                    <?php
+                                }else{
+                                    ?>
+                                    <tr>
+                                        <td colspan="2" class="text-center text-white bg-danger">
+                                            <h1>NOT FOUND</h1>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
