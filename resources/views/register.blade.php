@@ -50,8 +50,8 @@
                                         <img src="{{asset('assets/digital-bd-day.jpeg')}}">
                                     </a>
                                 </div>
-                                <h3 class="text-center">ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট</h3>
-                                <h5 class=" text-center">রেজিস্ট্রেশন</h5>
+                                <h3 class="text-center" style="color: 006622">ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট</h3>
+                                <h5 class=" text-center" style="color: red">রেজিস্ট্রেশন</h5>
                                 <?php
                                 if (time() < strtotime($RegistrationEnd . "+06:00") && time() > strtotime($RegistrationStart . "+06:00")) {
                                     ?>
