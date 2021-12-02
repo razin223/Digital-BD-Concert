@@ -255,10 +255,9 @@ class UserController extends Controller {
             $details = [
                 'to' => $request->email,
                 'name' => $User->name,
-                'group' => $this->Group[$User->group],
                 'from' => env("MAIL_FROM_ADDRESS"),
                 'from_name' => env("MAIL_FROM_NAME"),
-                'subject' => "ডিজিটাল বাংলাদেশ কুইজ ইমেইল ভেরিফিকেশন",
+                'subject' => "ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট ইমেইল ভেরিফিকেশন",
                 'id' => $User->id,
                 "code" => $VerificationCode
             ];
