@@ -26,7 +26,7 @@
             if (isset($Data)) {
                 $Class = "bg-danger";
                 if ($Data != null) {
-                    $Class = "Success";
+                    $Class = "bg-success";
                 }
                 ?>
                 <div class="row">
