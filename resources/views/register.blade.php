@@ -30,6 +30,9 @@
             b{
                 color: #006622;
             }
+            .text-danger{
+                color: darkred;
+            }
             
             @media only screen and (max-width: 576px) {
                 select{
