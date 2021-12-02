@@ -4,7 +4,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>ডিজিটাল বাংলাদেশ কুইজ: @yield('title','মেসেজ')</title>
+        <title>ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট: @yield('title','মেসেজ')</title>
         <!-- plugins:css -->
         <link rel="stylesheet" href="{{asset('admin/vendors/simple-line-icons/css/simple-line-icons.css')}}">
         <link rel="stylesheet" href="{{asset('admin/vendors/flag-icon-css/css/flag-icon.min.css')}}">
@@ -30,7 +30,7 @@
                                         <img src="{{asset('assets/digital-bd-day.jpeg')}}">
                                     </a>
                                 </div>
-                                <h3 class="text-center" style="color: #006622">ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট</h3>
+                                <h4 class="text-center" style="color: #006622">ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট</h4>
                                 <!--<h5 class="font-weight-light text-center">{{$message}}</h5>-->
                                 @csrf
                                 @include("template-admin.fixed-layout.message")

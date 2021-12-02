@@ -4,7 +4,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>ডিজিটাল বাংলাদেশ কুইজ: @yield('title','সাইন আপ')</title>
+        <title>ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট: @yield('title','সাইন আপ')</title>
         <!-- plugins:css -->
         <link rel="stylesheet" href="{{asset('admin/vendors/simple-line-icons/css/simple-line-icons.css')}}">
         <link rel="stylesheet" href="{{asset('admin/vendors/flag-icon-css/css/flag-icon.min.css')}}">
@@ -57,7 +57,7 @@
                                         <img src="{{asset('assets/digital-bd-day.jpeg')}}">
                                     </a>
                                 </div>
-                                <h3 class="text-center" style="color: #006622">ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট</h3>
+                                <h4 class="text-center" style="color: #006622">ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট</h4>
                                 <h5 class=" text-center" style="color: red">রেজিস্ট্রেশন</h5>
                                 <p class="text-center bg-danger text-white p-2"> * চিহ্নিত ফিল্ড গুলো অবশ‌্যই পূরণ করতে হবে। </p>
                                 <?php
