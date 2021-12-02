@@ -73,6 +73,7 @@ Route::resource('Category', 'CategoryController');
 
 Route::resource("User", 'UserController');
 Route::get('/User_Export', 'UserController@user_export')->name('User.export');
+Route::get('/User_Ticket_Check', 'UserController@user_ticket_check')->name('User.ticket_check');
 Route::resource("Question", 'QuestionController');
 Route::get("/Question_upload", 'QuestionController@Question_upload_view')->name('Question.upload');
 Route::post("/Question_upload", 'QuestionController@Question_upload');

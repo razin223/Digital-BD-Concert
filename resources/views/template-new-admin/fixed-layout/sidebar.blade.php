@@ -43,6 +43,12 @@
                         <p>Change Password</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('User.ticket_check')}}" class="nav-link">
+                        <i class="fas fa-circle nav-icon"></i>
+                        <p>Ticket Check</p>
+                    </a>
+                </li>
                
                 <?php
                 if (auth()->user()->user_type == 'Admin') {

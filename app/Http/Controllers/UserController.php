@@ -21,7 +21,7 @@ class UserController extends Controller {
 
     public function __construct() {
         $this->middleware('auth', ['only' => [
-                'get_user', 'create', 'store', 'index', 'edit', 'update', 'profile_update', 'profile_password_update'
+                'get_user', 'create', 'store', 'index', 'edit', 'update', 'profile_update', 'profile_password_update', 'user_ticket_check'
             ]
         ]);
     }
@@ -331,8 +331,8 @@ class UserController extends Controller {
 
 
                         \Mail::to($User->email)->send(new \App\Mail\Ticket($details));
-                        
-                        $SMS = "Thank you for your registration.\n"."Your Digital Bangladesh Day 2021 Concert Ticket No is ".$User->ticket."\nCheck email for PDF copy.";
+
+                        $SMS = "Thank you for your registration.\n" . "Your Digital Bangladesh Day 2021 Concert Ticket No is " . $User->ticket . "\nCheck email for PDF copy.";
                         $this->SendSMS($User->mobile_number, $SMS);
 
                         return redirect('/message')->with('success', 'ইমেইল ভেরিফিকেশন সফল হয়েছে। অল্প সময়ের মধ‌্যেই আপনি ইমেইলে টিকিটের PDF কপি এবং মোবাইলে SMS এর মাধ‌্যমে আপনার টিকিট নং পেয়ে যাবেন। আমাদের সাথে থাকার জন‌্য ধন‌্যবাদ।');
@@ -590,6 +590,16 @@ class UserController extends Controller {
             return ['status' => true];
         } else {
             return response(['message' => "আপনার বর্তমান পাসওয়ার্ড মিলে নাই।"], 422);
+        }
+    }
+
+    public function user_ticket_check(Request $request) {
+        if (!empty($request->ticket)) {
+            $Ticket = "DBD2021-" . $request->ticket;
+            $Data = \App\User::where('ticket', $Ticket)->first();
+            return view('new-admin.' . $request->route()->getName(), ['title' => 'Ticket Check', 'Data' => $Data]);
+        } else {
+            return view('new-admin.' . $request->route()->getName(), ['title' => 'Ticket Check']);
         }
     }
 
