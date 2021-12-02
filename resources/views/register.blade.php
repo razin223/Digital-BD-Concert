@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="form-group">
                                             <b style="">মোবাইল নম্বর (১১ ডিজিট)</b><br/>
-                                            <input type="text" name="mobile_number" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" maxlength="11" placeholder="মোবাইল নম্বর ইংরেজিতে লিখুন" required>
+                                            <input type="text" name="mobile_number" class="form-control form-control-lg" value="{{old('mobile_number')}}" id="exampleInputEmail1" maxlength="11" placeholder="মোবাইল নম্বর ইংরেজিতে লিখুন" required>
                                         </div>
                                         <div class="form-group">
                                             <b style="">জন্মতারিখ</b><br/>
@@ -118,7 +118,7 @@
                                         </div>
                                         <div class="form-group">
                                             <b style="" id="institute_name_header">প্রতিষ্ঠান</b><br/>
-                                            <input type="text" name="institute" id="institute" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="প্রতিষ্ঠান এর নাম লিখুন" required>
+                                            <input type="text" name="institute" id="institute" class="form-control form-control-lg" value="{{old('institute')}}" id="exampleInputEmail1" placeholder="প্রতিষ্ঠান এর নাম লিখুন" required>
                                         </div>
                                         <div class="form-group">
                                             <b style="">লিঙ্গ</b><br/>
@@ -148,7 +148,7 @@
                                         </div>
                                         <div class="form-group">
                                             <b style="">ঠিকানা</b><br/>
-                                            <input type="text" name="address" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="ঠিকানা লিখুন" required>
+                                            <input type="text" name="address" class="form-control form-control-lg" value="{{old('address')}}" id="exampleInputEmail1" placeholder="ঠিকানা লিখুন" required>
                                         </div>
                                         @include("new-admin.fixed-layout.captcha")
                                         <div class="mb-4">
