@@ -1,4 +1,4 @@
-<table style="font-family: 'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;border: solid lightgray 1px; background-color: transparent; max-width: 600px; margin:  0px auto" cellpadding="0" cellspacing="0">
+<table style="font-family: 'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;border: solid lightgray 1px; background-color: rgba(0,0,255,0.1); max-width: 600px; margin:  0px auto" cellpadding="0" cellspacing="0">
     <tbody>
         <tr>
             <td style="text-align: center">
@@ -15,7 +15,7 @@
 
 
 
-                <p style=" color: #000; display: block; background-color: yellow; margin: 30px auto; text-decoration: none; font-size: 1.5rem; text-align: center; padding: 10px 0px; width: 90%; border-radius: 10px;">Ticket No: {{$details['ticket']}}</p>
+                <p style=" color: #000; display: block; background-color: yellow; margin: 30px auto; text-decoration: none; font-size: 1.5rem; text-align: center; padding: 10px 0px; width: 90%; border-radius: 10px;">Ticket No<br/> {{$details['ticket']}}</p>
 
                 <p>&nbsp;</p>
 
