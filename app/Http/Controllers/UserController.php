@@ -596,7 +596,7 @@ class UserController extends Controller {
     public function user_ticket_check(Request $request) {
         if (!empty($request->ticket)) {
             $CheckDigit = substr($request->ticket, -1, 1);
-            $Serial = substr($request->ticket, 0, -1);
+            $Serial = (int) substr($request->ticket, 0, -1);
 
             if ($this->CheckDigit($Serial) == $CheckDigit) {
                 $Data = \App\User::find($Serial);
