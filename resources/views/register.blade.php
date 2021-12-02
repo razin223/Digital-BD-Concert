@@ -30,9 +30,7 @@
             b{
                 color: #006622;
             }
-            .form-conrol{
-                border: solid #006622 1px;
-            }
+            
             @media only screen and (max-width: 576px) {
                 select{
                     width: 68px;
