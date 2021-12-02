@@ -8,10 +8,12 @@ use Illuminate\Support\Facades\Storage;
 use App\Traits\MobileNoValidatorTrait;
 use PDF;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use App\Traits\SMSSendTrait;
 
 class UserController extends Controller {
 
     use MobileNoValidatorTrait;
+    use SMSSendTrait;
 
     private $DateCheck = "2021-12-10";
     private $RegistrationStart = '2021-11-29 00:00:00';
@@ -329,8 +331,11 @@ class UserController extends Controller {
 
 
                         \Mail::to($User->email)->send(new \App\Mail\Ticket($details));
+                        
+                        $SMS = "Thank you for your registration.\n"."Your Digital Bangladesh Day 2021 Concert Ticket No is ".$User->ticket."\nCheck email for PDF copy.";
+                        $this->SendSMS($User->mobile_number, $SMS);
 
-                        return redirect('/message')->with('success', 'ইমেইল ভেরিফিকেশন সফল হয়েছে। এখন সাইন ইন করুন।');
+                        return redirect('/message')->with('success', 'ইমেইল ভেরিফিকেশন সফল হয়েছে। অল্প সময়ের মধ‌্যেই আপনি ইমেইলে টিকিটের PDF কপি এবং মোবাইলে SMS এর মাধ‌্যমে আপনার টিকিট নং পেয়ে যাবেন। আমাদের সাথে থাকার জন‌্য ধন‌্যবাদ।');
                     } else {
                         return redirect('/message')->with('error', 'ইমেইল ভেরিফিকেশন এ ভুল ডাটা দেওয়া হয়েছে। দয়া করে সঠিক ডাটা দিন।');
                     }
@@ -338,7 +343,7 @@ class UserController extends Controller {
                     return redirect('/message')->with('error', 'ইমেইল ভেরিফিকেশন এ ভুল ডাটা দেওয়া হয়েছে। দয়া করে সঠিক ডাটা দিন।');
                 }
             } else {
-                return redirect('/message')->with('error', 'অ‌্যাকাউন্ট ভেরিফিকেশন ইতিমধ‌্যে সম্পন্ন হয়েছে। দয়া করে সাইন ইন করুন। যদি পাসওয়ার্ড ভুলে গিয়ে থাকেন দয়া করে পাসওয়ার্ড রিসেট করে নিন।');
+                return redirect('/message')->with('error', 'অ‌্যাকাউন্ট ভেরিফিকেশন ইতিমধ‌্যে সম্পন্ন হয়েছে। দয়া করে আপনার ইমেইল চেক করুন টিকিটের PDF কপির জন‌্য।');
             }
         } else {
             return redirect('/message')->with('error', 'ইমেইল ভেরিফিকেশন এ ভুল ডাটা দেওয়া হয়েছে। দয়া করে সঠিক ডাটা দিন।');
