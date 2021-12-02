@@ -60,6 +60,9 @@
                                             <input type="email" name="email" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="ইমেইল" required>
                                         </div>
                                         <div class="form-group">
+                                            <input type="text" name="mobile_number" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" maxlength="11" placeholder="মোবাইল নম্বর ইংরেজিতে লিখুন" required>
+                                        </div>
+                                        <div class="form-group">
                                             <b style="font-size: 0.75em; color: #c9c8c8">জন্মতারিখ</b><br/>
                                             <select name="day" required class="form-conrol">
                                                 <option value="">দিন</option>
@@ -92,19 +95,50 @@
                                                 ?>
                                             </select>
                                         </div>
-                                         
+                                        <div class="form-group">
+                                            <b style="font-size: 0.75em; color: #c9c8c8">পেশা</b><br/>
+                                            <select name="occupation" id="occupation" required class="form-conrol" style="width: 100%">
+                                                <option value="">পেশা নির্বাচন করুন</option>
+                                                <?php
+                                                foreach (\App\User::$Occupation as $key => $value) {
+                                                    echo "<option value='{$key}'";
+                                                    echo (old('occupation') == $key) ? " selected" : "";
+                                                    echo ">{$value}</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="address" id="institute" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="ইন্সটিটিউট এর নাম লিখুন" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <b style="font-size: 0.75em; color: #c9c8c8">লিঙ্গ</b><br/>
+                                            <select name="gender" id="occupation" required class="form-conrol" style="width: 100%">
+                                                <option value="">লিঙ্গ নির্বাচন করুন</option>
+                                                <?php
+                                                foreach (\App\User::$Gender as $key => $value) {
+                                                    echo "<option value='{$key}'";
+                                                    echo (old('gender') == $key) ? " selected" : "";
+                                                    echo ">{$value}</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
                                         <div class="form-group">
                                             <b style="font-size: 0.75em; color: #c9c8c8">জেলা</b><br/>
                                             <select name="district_id" required class="form-conrol" style="width: 100%">
                                                 <option value="">জেলা নির্বাচন করুন</option>
                                                 <?php
-                                                                                                foreach (\App\District::orderBy('bn','asc')->get() as $value) {
+                                                foreach (\App\District::orderBy('bn', 'asc')->get() as $value) {
                                                     echo "<option value='{$value->id}'";
                                                     echo (old('district_id') == $value->id) ? " selected" : "";
                                                     echo ">{$value->bn}</option>";
                                                 }
                                                 ?>
                                             </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="address" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="ঠিকানা লিখুন" required>
                                         </div>
                                         @include("new-admin.fixed-layout.captcha")
                                         <div class="mb-4">
@@ -187,6 +221,29 @@
                                                 gtag('js', new Date());
 
                                                 gtag('config', 'G-1R8EWLC6Z5');
+            </script>
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#occupation").change(function () {
+                        var Value = $(this).val();
+
+                        if (Value != "") {
+                            if (Value == 'Student') {
+                                $("#institute").attr("placeholder", "শিক্ষা প্রতিষ্ঠানের এর নাম লিখুন");
+                            } else if (Value == 'Service') {
+                                $("#institute").attr("placeholder", "চাকুরিরত প্রতিষ্ঠানের এর নাম লিখুন");
+                            } else if (Value == 'Business') {
+                                $("#institute").attr("placeholder", "ব‌্যবসায়িক প্রতিষ্ঠানের এর নাম লিখুন");
+                            } else if (Value == 'Others') {
+                                $("#institute").attr("placeholder", "পেশার নাম লিখুন ");
+                            }
+
+                        } else {
+                            $("#institute").attr("placeholder", "ইন্সটিটিউট এর নাম লিখুন")
+                        }
+                    });
+                });
             </script>
     </body>
 </html>

@@ -12,6 +12,18 @@ class User extends Authenticatable {
     use Notifiable;
     use SoftDeletes;
 
+    public static $Occupation = [
+        'Student' => "ছাত্র/ছাত্রী",
+        "Service" => "চাকুরীজীবি",
+        "Business" => "ব্যবসায়ী",
+        "Others" => "অন‌্যান‌্য",
+    ];
+    public static $Gender = [
+       'Male'=>"পুরুষ",
+        'Female'=>"মহিলা", 
+        'Others'=>"অন‌্যান‌্য"
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
