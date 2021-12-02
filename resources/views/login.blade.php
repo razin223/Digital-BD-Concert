@@ -4,7 +4,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>ডিজিটাল বাংলাদেশ কুইজ: @yield('title','সাইন ইন')</title>
+        <title>ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট: @yield('title','সাইন ইন')</title>
         <!-- plugins:css -->
         <link rel="stylesheet" href="{{asset('admin/vendors/simple-line-icons/css/simple-line-icons.css')}}">
         <link rel="stylesheet" href="{{asset('admin/vendors/flag-icon-css/css/flag-icon.min.css')}}">
@@ -30,7 +30,7 @@
                                         <img src="{{asset('assets/digital-bd-day.jpeg')}}">
                                     </a>
                                 </div>
-                                <h4 class="text-center">ডিজিটাল বাংলাদেশ কুইজ</h4>
+                                <h4 class="text-center">ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট</h4>
                                 <h6 class="font-weight-light text-center">সাইন ইন করুন</h6>
                                 @include('new-admin.fixed-layout.message')
                                 <form class="pt-3" method="POST" action="<?php echo route('login') ?>">
