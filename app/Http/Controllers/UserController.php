@@ -294,11 +294,11 @@ class UserController extends Controller {
                         $Ticket .= $this->CheckDigit($User->id);
                         $User->ticket = $Ticket;
                         $User->save();
-
-                        $QRString = "Name: " . $User->name . "\n";
+                        $QRString = "Ticket No: " . $User->ticket . "\n";
+                        $QRString .= "Name: " . $User->name . "\n";
                         $QRString .= "Email: " . $User->email . "\n";
                         $QRString .= "Mobile: " . $User->mobile_number . "\n";
-                        $QRString .= "Ticket No: " . $User->ticket;
+                        $QRString .= "Gender: " . $User->gender . "\n";
 
 
                         $details = [
@@ -595,8 +595,14 @@ class UserController extends Controller {
 
     public function user_ticket_check(Request $request) {
         if (!empty($request->ticket)) {
-            $Ticket = "DBD2021-" . $request->ticket;
-            $Data = \App\User::where('ticket', $Ticket)->first();
+            $CheckDigit = substr($request->ticket, -1, 1);
+            $Serial = substr($request->ticket, 0, -1);
+
+            if ($this->CheckDigit($Serial) == $CheckDigit) {
+                $Data = \App\User::find($Serial);
+            } else {
+                $Data = null;
+            }
             return view('new-admin.' . $request->route()->getName(), ['title' => 'Ticket Check', 'Data' => $Data]);
         } else {
             return view('new-admin.' . $request->route()->getName(), ['title' => 'Ticket Check']);

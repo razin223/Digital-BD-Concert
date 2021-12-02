@@ -41,6 +41,11 @@
                                 <?php
                                 if ($Data != null) {
                                     ?>
+                                <tr>
+                                    <td colspan="2" class="text-white text-center bg-success">
+                                        <h2>FOUND!!!</h2>
+                                    </td>
+                                </tr>
                                     <tr>
                                         <td>Name: </td>
                                         <td>{{$Data->name}}</td>
