@@ -5,10 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <style>
+            @font-face {
+                font-family: 'SolaimanLipi';
+                src: '{{resource_path("assets/Bangla_Font/SolaimanLipi_20-04-07.ttf") }}' format('truetype');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+        </style>
     </head>
     <body>
-        <table style="font-family:  'Noto Sans Bengali','Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;border: solid lightgray 1px; background-color: transparent; max-width: 450px; margin:  0px auto" cellpadding="0" cellspacing="0">
+        <table style="font-family:  'SolaimanLipi','Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;border: solid lightgray 1px; background-color: transparent; max-width: 450px; margin:  0px auto" cellpadding="0" cellspacing="0">
             <tbody>
                 <tr>
                     <td style="text-align: center">

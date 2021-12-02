@@ -31,6 +31,7 @@
                                     </a>
                                 </div>
                                 <h4 class="text-center" style="color: #006622">ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট</h4>
+                                {{resource_path("assets/Bangla_Font/SolaimanLipi_20-04-07.ttf") }}
                                 <h6 class="font-weight-light text-center">ভেরিফিকেশন ইমেইল হারিয়ে গেছে? ইমেইল অ‌্যাকাউন্ট দিন</h6>
                                 @include('new-admin.fixed-layout.message')
                                 <form class="pt-3" method="POST" action="<?php echo route('email_verify_resend') ?>">
