@@ -34,6 +34,10 @@
                 color: darkred !important;
             }
             
+            .bg-danger{
+                background-color: darkred !important;
+            }
+            
             @media only screen and (max-width: 576px) {
                 select{
                     width: 68px;
