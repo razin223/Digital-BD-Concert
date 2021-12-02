@@ -59,7 +59,7 @@
                                 </div>
                                 <h3 class="text-center" style="color: #006622">ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট</h3>
                                 <h5 class=" text-center" style="color: red">রেজিস্ট্রেশন</h5>
-                                <p class="text-center bg-danger text-white"> * চিহ্নিত ফিল্ড গুলো অবশ‌্যই পূরণ করতে হবে। </p>
+                                <p class="text-center bg-danger text-white p-2"> * চিহ্নিত ফিল্ড গুলো অবশ‌্যই পূরণ করতে হবে। </p>
                                 <?php
                                 if (time() < strtotime($RegistrationEnd . "+06:00") && time() > strtotime($RegistrationStart . "+06:00")) {
                                     ?>
