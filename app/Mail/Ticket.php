@@ -33,7 +33,7 @@ class Ticket extends Mailable {
      */
     public function build() {
         return $this->subject($this->details['subject'])
-                        ->view('Email.ticket')->attachData($this->details->pdf, $this->ticket . '.pdf', [
+                        ->view('Email.ticket')->attachData($this->details['pdf'], $this->details['ticket'] . '.pdf', [
                             'mime' => 'application/pdf',
                         ])
                         ->from($this->details['from'], $this->details['from_name']);
