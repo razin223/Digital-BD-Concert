@@ -58,19 +58,19 @@
                                         @csrf
                                         @include("template-admin.fixed-layout.message")
                                         <div class="form-group">
-                                            <b style="font-size: 0.75em; color: #c9c8c8">নাম</b><br/>
+                                            <b style="font-size: 0.75em; ">নাম</b><br/>
                                             <input type="text" name="name" class="form-control form-control-lg" value="{{old('name')}}" id="exampleInputEmail1" placeholder="পূর্ণ নাম" required>
                                         </div>
                                         <div class="form-group">
-                                            <b style="font-size: 0.75em; color: #c9c8c8">ইমেইল</b><br/>
+                                            <b style="font-size: 0.75em; ">ইমেইল</b><br/>
                                             <input type="email" name="email" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="ইমেইল" required>
                                         </div>
                                         <div class="form-group">
-                                            <b style="font-size: 0.75em; color: #c9c8c8">মোবাইল নম্বর (১১ ডিজিট)</b><br/>
+                                            <b style="font-size: 0.75em; ">মোবাইল নম্বর (১১ ডিজিট)</b><br/>
                                             <input type="text" name="mobile_number" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" maxlength="11" placeholder="মোবাইল নম্বর ইংরেজিতে লিখুন" required>
                                         </div>
                                         <div class="form-group">
-                                            <b style="font-size: 0.75em; color: #c9c8c8">জন্মতারিখ</b><br/>
+                                            <b style="font-size: 0.75em; ">জন্মতারিখ</b><br/>
                                             <select name="day" required class="form-conrol">
                                                 <option value="">দিন</option>
                                                 <?php
@@ -103,7 +103,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <b style="font-size: 0.75em; color: #c9c8c8">পেশা</b><br/>
+                                            <b style="font-size: 0.75em; ">পেশা</b><br/>
                                             <select name="occupation" id="occupation" required class="form-conrol" style="width: 100%">
                                                 <option value="">পেশা নির্বাচন করুন</option>
                                                 <?php
@@ -119,7 +119,7 @@
                                             <input type="text" name="address" id="institute" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="ইন্সটিটিউট এর নাম লিখুন" required>
                                         </div>
                                         <div class="form-group">
-                                            <b style="font-size: 0.75em; color: #c9c8c8">লিঙ্গ</b><br/>
+                                            <b style="font-size: 0.75em; ">লিঙ্গ</b><br/>
                                             <select name="gender" id="occupation" required class="form-conrol" style="width: 100%">
                                                 <option value="">লিঙ্গ নির্বাচন করুন</option>
                                                 <?php
@@ -132,7 +132,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <b style="font-size: 0.75em; color: #c9c8c8">জেলা</b><br/>
+                                            <b style="font-size: 0.75em; ">জেলা</b><br/>
                                             <select name="district_id" required class="form-conrol" style="width: 100%">
                                                 <option value="">জেলা নির্বাচন করুন</option>
                                                 <?php
@@ -145,7 +145,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <b style="font-size: 0.75em; color: #c9c8c8">ঠিকানা</b><br/>
+                                            <b style="font-size: 0.75em; ">ঠিকানা</b><br/>
                                             <input type="text" name="address" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="ঠিকানা লিখুন" required>
                                         </div>
                                         @include("new-admin.fixed-layout.captcha")
