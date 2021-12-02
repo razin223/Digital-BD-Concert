@@ -154,6 +154,7 @@ return [
         'Mews\Captcha\CaptchaServiceProvider',
         Maatwebsite\Excel\ExcelServiceProvider::class,
         'Intervention\Image\ImageServiceProvider',
+        Barryvdh\DomPDF\ServiceProvider::class,
     ],
     /*
       |--------------------------------------------------------------------------
@@ -205,5 +206,6 @@ return [
         'Captcha' => 'Mews\Captcha\Facades\Captcha',
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Image' => 'Intervention\Image\Facades\Image',
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 ];
