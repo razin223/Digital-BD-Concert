@@ -121,9 +121,6 @@ class UserController extends Controller {
                         "code" => $VerificationCode
                     ];
 
-
-
-
                     \Config::set('mail.mailers.smtp.username', \App\TemporaryExam::getVariable('APP_HASH_2'));
                     \Config::set('mail.mailers.smtp.password', \App\TemporaryExam::getVariable('APP_HASH'));
 
