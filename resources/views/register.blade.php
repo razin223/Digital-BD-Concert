@@ -59,19 +59,19 @@
                                         @csrf
                                         @include("template-admin.fixed-layout.message")
                                         <div class="form-group">
-                                            <b style="">নাম</b><br/>
+                                            <b style="">নাম</b><span class="text-danger">*</span><br/>
                                             <input type="text" name="name" class="form-control form-control-lg" value="{{old('name')}}" id="exampleInputEmail1" placeholder="পূর্ণ নাম" required>
                                         </div>
                                         <div class="form-group">
-                                            <b style="">ইমেইল</b><br/>
+                                            <b style="">ইমেইল</b><span class="text-danger">*</span><br/>
                                             <input type="email" name="email" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="ইমেইল" required>
                                         </div>
                                         <div class="form-group">
-                                            <b style="">মোবাইল নম্বর (১১ ডিজিট)</b><br/>
+                                            <b style="">মোবাইল নম্বর (১১ ডিজিট)</b><span class="text-danger">*</span><br/>
                                             <input type="number" name="mobile_number" class="form-control form-control-lg" value="{{old('mobile_number')}}" id="exampleInputEmail1" maxlength="11" placeholder="মোবাইল নম্বর ইংরেজিতে লিখুন" required>
                                         </div>
                                         <div class="form-group">
-                                            <b style="">জন্মতারিখ</b><br/>
+                                            <b style="">জন্মতারিখ</b><span class="text-danger">*</span><br/>
                                             <select name="day" required class="form-conrol">
                                                 <option value="">দিন</option>
                                                 <?php
@@ -104,7 +104,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <b style="">পেশা</b><br/>
+                                            <b style="">পেশা</b><span class="text-danger">*</span><br/>
                                             <select name="occupation" id="occupation" required class="form-conrol" style="width: 100%">
                                                 <option value="">পেশা নির্বাচন করুন</option>
                                                 <?php
@@ -117,11 +117,11 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <b style="" id="institute_name_header">প্রতিষ্ঠান</b><br/>
+                                            <b style="" id="institute_name_header">প্রতিষ্ঠান</b><span class="text-danger">*</span><br/>
                                             <input type="text" name="institute" id="institute" class="form-control form-control-lg" value="{{old('institute')}}" id="exampleInputEmail1" placeholder="প্রতিষ্ঠান এর নাম লিখুন" required>
                                         </div>
                                         <div class="form-group">
-                                            <b style="">লিঙ্গ</b><br/>
+                                            <b style="">লিঙ্গ</b><span class="text-danger">*</span><br/>
                                             <select name="gender"  required class="form-conrol" style="width: 100%">
                                                 <option value="">লিঙ্গ নির্বাচন করুন</option>
                                                 <?php
@@ -134,7 +134,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <b style="">জেলা</b><br/>
+                                            <b style="">জেলা</b><span class="text-danger">*</span><br/>
                                             <select name="district_id" required class="form-conrol" style="width: 100%">
                                                 <option value="">জেলা নির্বাচন করুন</option>
                                                 <?php
@@ -147,8 +147,12 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <b style="">ঠিকানা</b><br/>
+                                            <b style="">ঠিকানা</b><span class="text-danger">*</span><br/>
                                             <input type="text" name="address" class="form-control form-control-lg" value="{{old('address')}}" id="exampleInputEmail1" placeholder="ঠিকানা লিখুন" required>
+                                        </div>
+                                         <div class="form-group">
+                                            <b style="">জাতীয় পরিচয় পত্র নম্বর</b><br/>
+                                            <input type="number" name="nid" class="form-control form-control-lg" value="{{old('nid')}}" id="exampleInputEmail1" placeholder="জাতীয় পরিচয় পত্র নম্বর লিখুন" required>
                                         </div>
                                         @include("new-admin.fixed-layout.captcha")
                                         <div class="mb-4">

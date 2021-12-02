@@ -32,7 +32,6 @@ class UserController extends Controller {
     public function registration(Request $request) {
         if (isset($request->agree)) {
             
-
             $Required = [
                 'name' => 'required|max:255',
                 'email' => 'required|email|unique:users,email',
@@ -92,10 +91,15 @@ class UserController extends Controller {
 
             $User = new \App\User;
             $User->email = $request->email;
+            $User->mobile_number = $request->mobile_number;
             $User->name = $request->name;
+            $User->address = $request->address;
+            $User->district_id = $request->district_id;
+            $User->occupation = $request->occupation;
+            $User->institute = $request->institute;
+            $User->gender = $request->gender;
+            $User->nid = $request->nid;
             $User->date_of_birth = $DateofBirth;
-            $User->group = "Ka";
-            $User->password = bcrypt($request->password);
             $User->user_type = 'User';
             $User->status = 'Awaiting Verification';
             if ($User->save()) {
