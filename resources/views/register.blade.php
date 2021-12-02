@@ -60,12 +60,6 @@
                                             <input type="email" name="email" class="form-control form-control-lg" value="{{old('email')}}" id="exampleInputEmail1" placeholder="ইমেইল" required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="পাসওয়ার্ড" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" name="password_confirmation" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="পুনরায় পাসওয়ার্ড দিন" required>
-                                        </div>
-                                        <div class="form-group">
                                             <b style="font-size: 0.75em; color: #c9c8c8">জন্মতারিখ</b><br/>
                                             <select name="day" required class="form-conrol">
                                                 <option value="">দিন</option>
