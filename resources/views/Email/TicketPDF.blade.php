@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,12 +11,11 @@
                 src: '{{resource_path("assets/Bangla_Font/SolaimanLipi_20-04-07.ttf") }}' format('truetype');
                 font-weight: normal;
                 font-style: normal;
-
             }
         </style>
     </head>
     <body>
-        <table style="font-family:  'SolaimanLipi','Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;border: solid lightgray 1px; background-color: transparent; max-width: 450px; margin:  0px auto" cellpadding="0" cellspacing="0">
+        <table style="font-family:  'DejaVu Sans',sans-serif;border: solid lightgray 1px; background-color: transparent; max-width: 450px; margin:  0px auto" cellpadding="0" cellspacing="0">
             <tbody>
                 <tr>
                     <td style="text-align: center">
