@@ -7,8 +7,8 @@ trait SMSSendTrait {
     public function SendSMS(string $Number, string $SMS) {
         $url = "https://smsapi.shiramsystem.com/user_api/";
         $post = array(
-            "email" => "razin223@gmail.com",
-            "password" => "rsaftert",
+            "email" => "istiyak@doict.gov.bd",
+            "password" => "ashd&^IGZO12nbqp,]",
             "method" => "send_sms",
             "mobile" => array("88" . $Number),
             "mask" => "03590002390",

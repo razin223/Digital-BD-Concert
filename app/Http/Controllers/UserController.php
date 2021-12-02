@@ -297,7 +297,7 @@ class UserController extends Controller {
 
                         $QRString = "Name: " . $User->name . "\n";
                         $QRString .= "Email: " . $User->email . "\n";
-                        $QRString .= "Mobile: " . $User->mobile_no . "\n";
+                        $QRString .= "Mobile: " . $User->mobile_number . "\n";
                         $QRString .= "Ticket No: " . $User->ticket;
 
 
