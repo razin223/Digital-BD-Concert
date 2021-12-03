@@ -58,7 +58,7 @@
                                     </a>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4 offset-md-2">
+                                    <div class="col-md-8 offset-md-2">
                                         <h4 class="text-center" style="color: #006622">ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট</h4>
                                         <h5 class=" text-center" style="color: red">রেজিস্ট্রেশন</h5>
                                         <p class="text-center bg-danger text-white p-2"> * চিহ্নিত ফিল্ড গুলো অবশ‌্যই পূরণ করতে হবে। </p>
@@ -72,7 +72,7 @@
                                         @csrf
                                         @include("template-admin.fixed-layout.message")
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <b style="">নাম</b><span class="text-danger">*</span><br/>
                                                     <input type="text" name="name" class="form-control form-control-lg" value="{{old('name')}}" id="exampleInputEmail1" placeholder="পূর্ণ নাম" required>
@@ -138,7 +138,7 @@
 
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <b style="">লিঙ্গ</b><span class="text-danger">*</span><br/>
                                                     <select name="gender"  required class="form-conrol" style="width: 100%">
@@ -199,7 +199,7 @@
                                     ?>
 
                                     <div class="row">
-                                        <div class="col-md-4 offset-md-2">
+                                        <div class="col-md-8 offset-md-2">
                                             <div class="text-center mt-4 font-weight-light"> <a href="<?php echo route('email_verify_resend') ?>" class="text-primary">পুনরায় ভেরিফিকেশন ইমেইল পাঠান</a></div>
 
                                             <div class="text-center mt-4 font-weight-light">
