@@ -4,5 +4,5 @@
         <img src="{{captcha_src()}}" id="captcha_img" style="width: 85%; height: 70px;"/>
         <a href="javascript:;" style="position:  relative; margin-top: 20px;" id="captcha"> <img src="assets/icon/refresh.png" style="width: 12%" class="rounded-circle"/></a>
     </div>
-    <input type="text" name="captcha" class="form-control form-control-lg mt-5" id="exampleInputPassword1" placeholder="উপরের ছবিতে দেখানো অক্ষর গুলো প্রবেশ করান">
+    <input type="text" name="captcha" class="form-control form-control-lg mt-3" id="exampleInputPassword1" placeholder="উপরের ছবিতে দেখানো অক্ষর গুলো প্রবেশ করান">
 </div>
