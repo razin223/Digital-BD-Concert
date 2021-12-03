@@ -176,7 +176,7 @@
                                                 </div>
                                                 @include("new-admin.fixed-layout.captcha")
                                             </div>
-                                            <div class="col-md-4 offset-md-2">
+                                            <div class="col-md-8 offset-md-2">
                                                 <div class="mb-4">
                                                     <div class="form-check">
                                                         <label>
