@@ -5,6 +5,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট: @yield('title','সাইন আপ')</title>
+        <meta property="og:url"                content="{{url()->current()}}" />
+        <meta property="og:type"               content="website" />
+        <meta property="og:title"              content="ডিজিটাল বাংলাদেশ দিবস ২০২১ কনসার্ট" />
+        <meta property="og:description"        content="" />
+        <meta property="og:image"              content="{{asset('assets/digital-bd-day.jpeg')}}" />
         <!-- plugins:css -->
         <link rel="stylesheet" href="{{asset('admin/vendors/simple-line-icons/css/simple-line-icons.css')}}">
         <link rel="stylesheet" href="{{asset('admin/vendors/flag-icon-css/css/flag-icon.min.css')}}">
