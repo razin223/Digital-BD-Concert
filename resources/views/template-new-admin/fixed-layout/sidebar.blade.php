@@ -4,7 +4,7 @@
     <a href="{{route('admin.dashboard')}}" class="brand-link">
 <!--        <img src="{{asset('assets/img/BIG.png')."?".time()}}" alt="BIG Logo" class="brand-image img-circle elevation-3"
              style="opacity: .8; background-color: white" >-->
-        <span class="brand-text font-weight-light">Digital Bangladesh Quiz</span>
+        <span class="brand-text font-weight-light">Digital Bangladesh Concert</span>
     </a>
 
     <!-- Sidebar -->
