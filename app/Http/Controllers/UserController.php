@@ -17,7 +17,7 @@ class UserController extends Controller {
 
     private $DateCheck = "2021-12-10";
     private $RegistrationStart = '2021-11-29 00:00:00';
-    private $RegistrationEnd = '2021-12-09 23:59:59';
+    private $RegistrationEnd = '2021-12-12 23:59:59';
 
     public function __construct() {
         $this->middleware('auth', ['only' => [
